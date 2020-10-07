@@ -1,0 +1,42 @@
+// Author: Jonathan Mah
+// Date: 20201007
+// The purpose of this script is to simulate a large sample size of independent
+// sites.
+
+initialize()
+{
+  setSeed(1);
+  initializeMutationRate(1e-7);
+
+  // m1 mutation type: recessive deleterious mutation
+  initializeMutationType("m1", 0.0, "f", -1.0);
+
+  // g1 genomic element type: uses m1 and m2 for all mutations
+  initializeGenomicElementType("g1", m1, 1.0);
+
+  // uniform chromosome of length 1000 kb with zero recombination
+  initializeGenomicElement(g1, 0, 999999);
+  initializeRecombinationRate(0);
+}
+
+// Create a population of 1000 individuals
+1
+{
+  sim.addSubpop("p1", 1000);
+}
+
+// Let population burn in for 12 * N_a generations
+
+12000
+{
+  p1.outputSample(10, filePath="../Data/sample_of_10.txt");
+  p1.outputVCFSample(10, filePath="../Data/sample_of_10.vcf");
+  p1.outputSample(50, filePath="../Data/sample_of_50.txt");
+  p1.outputVCFSample(50, filePath="../Data/sample_of_50.vcf");
+  p1.outputSample(100, filePath="../Data/sample_of_100.txt");
+  p1.outputVCFSample(100, filePath="../Data/sample_of_100.vcf");
+  p1.outputSample(500, filePath="../Data/sample_of_500.txt");
+  p1.outputVCFSample(500, filePath="../Data/sample_of_500.vcf");
+  p1.outputSample(1000, filePath="../Data/sample_of_1000.txt");
+  p1.outputVCFSample(1000, filePath="../Data/sample_of_1000.vcf");
+}
