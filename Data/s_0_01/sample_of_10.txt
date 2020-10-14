@@ -1,0 +1,13 @@
+#OUT: 12000 SS p1 10 ../Data/s_0_01/sample_of_10.txt
+Mutations:
+Genomes:
+p1:0 A
+p1:1 A
+p1:2 A
+p1:3 A
+p1:4 A
+p1:5 A
+p1:6 A
+p1:7 A
+p1:8 A
+p1:9 A
