@@ -5,17 +5,18 @@
 
 initialize()
 {
-  setSeed(1);
+  // Set a Seed to keep track of the type of simulation we are using.
+  setSeed(chrom + (init_seed - 1) * 1000);
   initializeMutationRate(1e-7);
 
   // m1 mutation type: recessive deleterious mutation
-  initializeMutationType("m1", 0.0, "f", -1.0);
+  initializeMutationType("m1", 0.0, "f", -0.01);
 
   // g1 genomic element type: uses m1 and m2 for all mutations
   initializeGenomicElementType("g1", m1, 1.0);
 
-  // uniform chromosome of length 1000 kb with zero recombination
-  initializeGenomicElement(g1, 0, 999999);
+  // uniform chromosome of length 100 b with zero recombination
+  initializeGenomicElement(g1, 0, 100);
   initializeRecombinationRate(0);
 }
 
@@ -29,14 +30,14 @@ initialize()
 
 12000
 {
-  p1.outputSample(10, filePath="../Data/sample_of_10.txt");
-  p1.outputVCFSample(10, filePath="../Data/sample_of_10.vcf");
-  p1.outputSample(50, filePath="../Data/sample_of_50.txt");
-  p1.outputVCFSample(50, filePath="../Data/sample_of_50.vcf");
-  p1.outputSample(100, filePath="../Data/sample_of_100.txt");
-  p1.outputVCFSample(100, filePath="../Data/sample_of_100.vcf");
-  p1.outputSample(500, filePath="../Data/sample_of_500.txt");
-  p1.outputVCFSample(500, filePath="../Data/sample_of_500.vcf");
-  p1.outputSample(1000, filePath="../Data/sample_of_1000.txt");
-  p1.outputVCFSample(1000, filePath="../Data/sample_of_1000.vcf");
+  p1.outputSample(10, filePath="../Data/s_0_01/sample_of_10.txt");
+  p1.outputVCFSample(10, filePath="../Data/s_0_01/sample_of_10.vcf");
+  p1.outputSample(50, filePath="../Data/s_0_01/sample_of_50.txt");
+  p1.outputVCFSample(50, filePath="../Data/s_0_01/sample_of_50.vcf");
+  p1.outputSample(100, filePath="../Data/s_0_01/sample_of_100.txt");
+  p1.outputVCFSample(100, filePath="../Data/s_0_01/sample_of_100.vcf");
+  p1.outputSample(500, filePath="../Data/s_0_01/sample_of_500.txt");
+  p1.outputVCFSample(500, filePath="../Data/s_0_01/sample_of_500.vcf");
+  p1.outputSample(1000, filePath="../Data/s_0_01/sample_of_1000.txt");
+  p1.outputVCFSample(1000, filePath="../Data/s_0_01/sample_of_1000.vcf");
 }
