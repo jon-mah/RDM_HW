@@ -7,6 +7,7 @@ JCM 20201007
 import sys
 import os
 import argparse
+from scipy import stats
 
 
 class ArgumentParserNoArgHelp(argparse.ArgumentParser):
@@ -29,9 +30,9 @@ class ComputeHardyWeinbergDeparture():
         else:
             raise ValueError("%s must specify a valid file name" % fname)
 
-    def compute_chi_square_iteration(self, observed, expected):
+    def compute_chi_sq_iter(self, obs, exp):
         """Return chi-square summation iteration."""
-        return (observed - expected) ** 2 / expected
+        return (obs - exp) ** 2 / exp
 
     def compute_hw_parser(self):
         """Return *argparse.ArgumentParser* for ``fitdadi_infer_DFE.py``."""
@@ -61,46 +62,42 @@ class ComputeHardyWeinbergDeparture():
         count_hetero = 0
         count_homo_b = 0
         f = open(input_vcf, 'r')
+        p_values = []
+        chi_sq_values = []
         for line in f:
-            count_homo_a += line.count('0|0')
-            count_hetero += line.count('1|0')
-            count_hetero += line.count('0|1')
-            count_homo_b += line.count('1|1')
+            if ";MT=1;" in line:
+                count_homo_a += line.count('0|0')
+                count_hetero += line.count('1|0')
+                count_hetero += line.count('0|1')
+                count_homo_b += line.count('1|1')
+                allele_count_a = 2 * count_homo_a + count_hetero
+                allele_count_b = 2 * count_homo_b + count_hetero
+                total_allele_count = allele_count_a + allele_count_b
+
+                obs_homo_a = count_homo_a / (total_allele_count / 2)
+                obs_hetero = count_hetero / (total_allele_count / 2)
+                obs_homo_b = count_homo_b / (total_allele_count / 2)
+                allele_freq_a = allele_count_a / total_allele_count
+                allele_freq_b = allele_count_b / total_allele_count
+                exp_homo_a = allele_freq_a ** 2
+                exp_hetero = 2 * allele_freq_a * allele_freq_b
+                exp_homo_b = allele_freq_b ** 2
+                f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
+                f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
+                p_values.append(stats.chisquare(f_obs, f_exp)[1])
+                chi_sq_values.append(stats.chisquare(f_obs, f_exp)[0])
+
+                chi_sq_value = self.compute_chi_sq_iter(
+                        obs_homo_a, exp_homo_a) + \
+                    self.compute_chi_sq_iter(
+                        obs_hetero, exp_hetero) + \
+                    self.compute_chi_sq_iter(
+                        obs_homo_b, exp_homo_b)
         f.close()
-        allele_count_a = 2 * count_homo_a + count_hetero
-        allele_count_b = 2 * count_homo_b + count_hetero
-        total_allele_count = allele_count_a + allele_count_b
-        print(total_allele_count)
-
-        observed_homo_a = count_homo_a / (total_allele_count / 2)
-        observed_hetero = count_hetero / (total_allele_count / 2)
-        observed_homo_b = count_homo_b / (total_allele_count / 2)
-        allele_frequency_a = allele_count_a / total_allele_count
-        allele_frequency_b = allele_count_b / total_allele_count
-        expected_homo_a = allele_frequency_a ** 2
-        expected_hetero = 2 * allele_frequency_a * allele_frequency_b
-        expected_homo_b = allele_frequency_b ** 2
-        chi_square_statistic = self.compute_chi_square_iteration(
-                observed_homo_a, expected_homo_a) + \
-            self.compute_chi_square_iteration(
-                observed_hetero, expected_hetero) + \
-            self.compute_chi_square_iteration(
-                observed_homo_b, expected_homo_b)
-
-        print('The observed frequency of A homozygotes is ' +
-              str(observed_homo_a))
-        print('The observed frequency of heterozygotes is ' +
-              str(observed_hetero))
-        print('The observed frequency of B homozygotes is ' +
-              str(observed_homo_b))
-        print('The expected frequency of A homozygotes is ' +
-              str(expected_homo_a))
-        print('The expected frequency of heterozygotes is ' +
-              str(expected_hetero))
-        print('The expected frequency of B homozygotes is ' +
-              str(expected_homo_b))
-        print('The computed chi-square statstic is ' +
-              str(chi_square_statistic))
+        p_values.sort()
+        chi_sq_values.sort()
+        print(p_values[0])
+        # print(chi_sq_values)
 
 
 if __name__ == '__main__':
