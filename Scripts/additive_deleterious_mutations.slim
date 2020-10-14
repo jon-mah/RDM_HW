@@ -1,0 +1,45 @@
+// Author: Jonathan Mah
+// Date: 20201007
+// The purpose of this script is to simulate a large sample size of independent
+// sites.
+
+initialize()
+{
+  // Set a Seed to keep track of the type of simulation we are using.
+  setSeed(chrom + (init_seed - 1) * 10000);
+  initializeMutationRate(1e-6);
+
+  // m1 mutation type: additive deleterious mutation
+  initializeMutationType("m1", 0.5, "f", -0.001);
+
+  // g1 genomic element type: uses m1 and m2 for all mutations
+  initializeGenomicElementType("g1", m1, 1.0);
+
+  // uniform chromosome of length 100 b with zero recombination
+  initializeGenomicElement(g1, 0, 100);
+  initializeRecombinationRate(0);
+}
+
+// Create a population of 1000 individuals
+1
+{
+  sim.addSubpop("p1", 1000);
+}
+
+// Let population burn in for 12 * N_a generations
+
+12000
+{
+  // p1.outputSample(10, filePath="../Data/s_0_001_add/sample_10_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(10, filePath="../Data/s_0_001_add/sample_10_chrom_" + chrom + ".vcf");
+  // p1.outputSample(50, filePath="../Data/s_0_001_add/sample_50_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(50, filePath="../Data/s_0_001_add/sample_50_chrom_" + chrom + ".vcf");
+  // p1.outputSample(100, filePath="../Data/s_0_001_add/sample_100_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(100, filePath="../Data/s_0_001_add/sample_100_chrom_" + chrom + ".vcf");
+  // p1.outputSample(500, filePath="../Data/s_0_001_add/sample_500_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(500, filePath="../Data/s_0_001_add/sample_500_chrom_" + chrom + ".vcf");
+  // p1.outputSample(1000, filePath="../Data/s_0_001_add/sample_1000_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(1000, filePath="../Data/s_0_001_add/sample_1000_chrom_" + chrom + ".vcf");
+  // p1.outputSample(10000, filePath="../Data/s_0_001_add/sample_10000_chrom_" + chrom + ".txt");
+  // p1.outputVCFSample(10000, filePath="../Data/s_0_001_add/sample_10000_chrom_" + chrom + ".vcf");
+}

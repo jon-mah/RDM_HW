@@ -9,7 +9,7 @@
 seed=1
 num_ind=8 # Number of samples from single population.
 easySFS_proj=16 # Number of chromosomes that sample is projected down into.
-s_value=s_0
+s_value=s_0_001_add
 sample_size=10
 prefix="../Data/${s_value}/sample_${sample_size}" # Output prefix, and input prefix of given vcf
 
