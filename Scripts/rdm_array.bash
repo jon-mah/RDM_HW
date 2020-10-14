@@ -3,7 +3,7 @@
 #$ -cwd
 #$ -V
 #$ -l h_data=10G
-#$ -l h_rt=0:10:00
+#$ -l h_rt=0:20:00
 
 # INPUT ARGUMENTS
 seed=1
