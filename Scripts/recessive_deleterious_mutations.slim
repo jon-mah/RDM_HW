@@ -7,7 +7,7 @@ initialize()
 {
   // Set a Seed to keep track of the type of simulation we are using.
   setSeed(chrom + (init_seed - 1) * 1000);
-  initializeMutationRate(1e-7);
+  initializeMutationRate(1e-6);
 
   // m1 mutation type: recessive deleterious mutation
   initializeMutationType("m1", 0.0, "f", -0.01);
@@ -30,14 +30,14 @@ initialize()
 
 12000
 {
-  p1.outputSample(10, filePath="../Data/s_0_01/sample_of_10.txt");
-  p1.outputVCFSample(10, filePath="../Data/s_0_01/sample_of_10.vcf");
-  p1.outputSample(50, filePath="../Data/s_0_01/sample_of_50.txt");
-  p1.outputVCFSample(50, filePath="../Data/s_0_01/sample_of_50.vcf");
-  p1.outputSample(100, filePath="../Data/s_0_01/sample_of_100.txt");
-  p1.outputVCFSample(100, filePath="../Data/s_0_01/sample_of_100.vcf");
-  p1.outputSample(500, filePath="../Data/s_0_01/sample_of_500.txt");
-  p1.outputVCFSample(500, filePath="../Data/s_0_01/sample_of_500.vcf");
-  p1.outputSample(1000, filePath="../Data/s_0_01/sample_of_1000.txt");
-  p1.outputVCFSample(1000, filePath="../Data/s_0_01/sample_of_1000.vcf");
+  p1.outputSample(10, filePath="../Data/s_0_01/sample_10_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(10, filePath="../Data/s_0_01/sample_10_chrom_" + chrom + ".vcf");
+  p1.outputSample(50, filePath="../Data/s_0_01/sample_50_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(50, filePath="../Data/s_0_01/sample_50_chrom_" + chrom + ".vcf");
+  p1.outputSample(100, filePath="../Data/s_0_01/sample_100_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(100, filePath="../Data/s_0_01/sample_100_chrom_" + chrom + ".vcf");
+  p1.outputSample(500, filePath="../Data/s_0_01/sample_500_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(500, filePath="../Data/s_0_01/sample_500_chrom_" + chrom + ".vcf");
+  p1.outputSample(1000, filePath="../Data/s_0_01/sample_1000_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(1000, filePath="../Data/s_0_01/sample_1000_chrom_" + chrom + ".vcf");
 }
