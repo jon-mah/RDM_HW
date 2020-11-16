@@ -1,0 +1,4 @@
+chrom,pos,allele_count,num_heterozygotes,num_homozygotes,chi_p_values,fisher_p_values
+18,20,1,1,0,0.9862450601914519,1.0
+32,74,1,1,0,0.9862450601914519,1.0
+71,51,1,1,0,0.9862450601914519,1.0

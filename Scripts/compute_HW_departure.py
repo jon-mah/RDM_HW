@@ -4,10 +4,14 @@ Computes allele and genotype freuency, as well as deviations from HW.
 JCM 20201007
 """
 
+import math
 import sys
 import os
 import argparse
 from scipy import stats
+
+import pandas as pd
+import numpy as np
 
 
 class ArgumentParserNoArgHelp(argparse.ArgumentParser):
@@ -30,9 +34,16 @@ class ComputeHardyWeinbergDeparture():
         else:
             raise ValueError("%s must specify a valid file name" % fname)
 
-    def compute_chi_sq_iter(self, obs, exp):
-        """Return chi-square summation iteration."""
-        return (obs - exp) ** 2 / exp
+    def IntGreaterThanZero(self, n):
+        """If *n* is an integer > 1, returns it, otherwise an error."""
+        try:
+            n = int(n)
+        except ValueError:
+            sys.exit("%s is not an integer" % n)
+        if n <= 0:
+            raise ValueError("%d is not > 1" % n)
+        else:
+            return n
 
     def compute_hw_parser(self):
         """Return *argparse.ArgumentParser* for ``fitdadi_infer_DFE.py``."""
@@ -46,6 +57,10 @@ class ComputeHardyWeinbergDeparture():
             'input_vcf', type=self.ExistingFile,
             help=('Variant Call Format file containing Single-nucleotide-'
                   'polymorphism data.'))
+        parser.add_argument(
+            '--sample_size', type=self.IntGreaterThanZero,
+            help=('Number of individuals sampled in `vcf`.'),
+            default=1)
         return parser
 
     def main(self):
@@ -57,47 +72,159 @@ class ComputeHardyWeinbergDeparture():
 
         # Assign arguments
         input_vcf = args['input_vcf']
+        sample_size = args['sample_size']
 
-        count_homo_a = 0
-        count_hetero = 0
-        count_homo_b = 0
-        f = open(input_vcf, 'r')
-        p_values = []
+        # Initialize empty lists for dataframe
+        chrom = []
+        pos = []
+        allele_count = []
+        num_heterozygotes = []
+        num_homozygotes = []
+        chi_p_values = []
         chi_sq_values = []
+        fisher_p_values = []
+        snp_count = 0
+        f = open(input_vcf, 'r')
+        allele_count_dict = {}
+
         for line in f:
             if ";MT=1;" in line:
-                count_homo_a += line.count('0|0')
-                count_hetero += line.count('1|0')
-                count_hetero += line.count('0|1')
-                count_homo_b += line.count('1|1')
-                allele_count_a = 2 * count_homo_a + count_hetero
-                allele_count_b = 2 * count_homo_b + count_hetero
-                total_allele_count = allele_count_a + allele_count_b
+                obs_homo_a = 0
+                obs_hetero = 0
+                obs_homo_b = 0
+                obs_homo_a += line.count('0|0')
+                obs_hetero += line.count('1|0')
+                obs_hetero += line.count('0|1')
+                obs_homo_b += line.count('1|1')
+                if obs_homo_b >= 1 or obs_hetero >= 2:
+                    # Compute summary statistics for detecing HWE departure
+                    snp_count += 1
+                    allele_count_a = 2 * obs_homo_a + obs_hetero
+                    allele_count_b = 2 * obs_homo_b + obs_hetero
+                    total_allele_count = allele_count_a + allele_count_b
+                    num_ind = total_allele_count / 2
 
-                obs_homo_a = count_homo_a / (total_allele_count / 2)
-                obs_hetero = count_hetero / (total_allele_count / 2)
-                obs_homo_b = count_homo_b / (total_allele_count / 2)
-                allele_freq_a = allele_count_a / total_allele_count
-                allele_freq_b = allele_count_b / total_allele_count
-                exp_homo_a = allele_freq_a ** 2
-                exp_hetero = 2 * allele_freq_a * allele_freq_b
-                exp_homo_b = allele_freq_b ** 2
-                f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
-                f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
-                p_values.append(stats.chisquare(f_obs, f_exp)[1])
-                chi_sq_values.append(stats.chisquare(f_obs, f_exp)[0])
+                    # chi-squared
+                    allele_freq_a = allele_count_a / total_allele_count
+                    allele_freq_b = allele_count_b / total_allele_count
+                    exp_homo_a = allele_freq_a ** 2 * total_allele_count / 2
+                    exp_hetero = allele_freq_a * allele_freq_b * \
+                        total_allele_count
+                    exp_homo_b = allele_freq_b ** 2 * total_allele_count / 2
+                    f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
+                    f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
+                    chi_p_values.append(stats.chisquare(f_obs, f_exp)[1])
+                    chi_sq_values.append(stats.chisquare(f_obs, f_exp)[0])
 
-                chi_sq_value = self.compute_chi_sq_iter(
-                        obs_homo_a, exp_homo_a) + \
-                    self.compute_chi_sq_iter(
-                        obs_hetero, exp_hetero) + \
-                    self.compute_chi_sq_iter(
-                        obs_homo_b, exp_homo_b)
+                    # Fisher's exact test for HWE
+                    fisher_numerator = math.factorial(num_ind) * \
+                        math.factorial(allele_count_a) * \
+                        math.factorial(allele_count_b) * \
+                        2 ** obs_hetero
+                    fisher_denominator = math.factorial(obs_homo_a) * \
+                        math.factorial(obs_hetero) * \
+                        math.factorial(obs_homo_b) * \
+                        math.factorial(2 * num_ind)
+                    fisher_p_values.append(
+                        fisher_numerator / fisher_denominator)
+
+                    # Compute summary information for dataframe
+                    chrom.append(line.split()[0])
+                    pos.append(line.split()[1])
+                    this_allele_count = obs_hetero + 2 * obs_homo_b
+                    allele_count.append(this_allele_count)
+                    num_heterozygotes.append(obs_hetero)
+                    num_homozygotes.append(obs_homo_b)
+                    if this_allele_count not in allele_count_dict:
+                        allele_count_dict[this_allele_count] = \
+                            np.array([obs_hetero, obs_homo_b])
+                    else:
+                        allele_count_dict[this_allele_count] = \
+                            allele_count_dict[this_allele_count] + \
+                            np.array([obs_hetero, obs_homo_b])
+
         f.close()
-        p_values.sort()
+
+        allele_count_df = pd.DataFrame.from_dict(
+            allele_count_dict,
+            orient='index',
+            columns=['heterozygotes', 'homozygotes'])
+        allele_count_df.rename_axis('allele_count', axis='columns')
+
+        summary_df = pd.DataFrame({'chrom': chrom,
+                                   'pos': pos,
+                                   'allele_count': allele_count,
+                                   'num_heterozygotes': num_heterozygotes,
+                                   'num_homozygotes': num_homozygotes,
+                                   'chi_p_values': chi_p_values,
+                                   'fisher_p_values': fisher_p_values})
+
+        # Chi-squared test for HWE
+        chi_p_values.sort()
         chi_sq_values.sort()
-        print(p_values[0])
-        # print(chi_sq_values)
+        low_chi_p_count = 0
+        sig_chi_p_count = 0
+        for val in chi_p_values:
+            if val <= 0.5:
+                low_chi_p_count += 1
+            if val <= 0.05:
+                sig_chi_p_count += 1
+        low_chi_p_freq = low_chi_p_count / len(chi_p_values)
+        sig_chi_p_freq = sig_chi_p_count / len(chi_p_values)
+
+        # print('There are ' + str(snp_count) + ' SNPs in this sample.')
+        # print('The minimum chi-squared p-value is ' +
+        #       str(chi_p_values[0]) + '.')
+        # print(chi_p_values)
+        # print('The proportion of chi-squared p-values below 0.5 is ' +
+        #       str(low_chi_p_freq))
+        # print('The chi-squared p-values are : ' + str(chi_p_values) + '.\n')
+
+        # Fisher's exact test for HWE
+        fisher_p_values.sort()
+        low_fisher_p_count = 0
+        sig_fisher_p_count = 0
+        for val in fisher_p_values:
+            if val <= 0.5:
+                low_fisher_p_count += 1
+            if val <= 0.05:
+                sig_fisher_p_count += 1
+        low_fisher_p_freq = low_fisher_p_count / len(fisher_p_values)
+        sig_fisher_p_freq = sig_fisher_p_count / len(fisher_p_values)
+
+        with open('../Data/output.txt', 'a') as f:
+            f.write('Outputting summary results for ' + str(input_vcf) + '.\n')
+            f.write('There are ' + str(snp_count) + ' SNPs in this sample.\n')
+            f.write('The minimum chi-squared p-value is ' +
+                    str(chi_p_values[0]) + '.\n')
+            f.write('The minimum Fisher p-value is ' +
+                    str(fisher_p_values[0]) + '.\n')
+            f.write('The proportion of chi-squared p-values below 0.5 is ' +
+                    str(low_chi_p_freq) + '.\n')
+            f.write('The proportion of chi-squared p-values below 0.05 is ' +
+                    str(sig_chi_p_freq) + '\n.')
+            f.write('The proportion of Fisher p-values below 0.5 is ' +
+                    str(low_fisher_p_freq) + '.\n')
+            f.write('The proportion of Fisher p-values below 0.05 is ' +
+                    str(sig_fisher_p_freq) + '\n.')
+            f.write('\n')
+
+        table_df = pd.DataFrame.from_records([
+            {'sample_size': num_ind,
+             'snp_count': snp_count,
+             'minimum_chi_p': chi_p_values[0],
+             'minimum_fisher_p': fisher_p_values[0],
+             'chi < 0.5': low_chi_p_freq,
+             'chi < 0.05': sig_chi_p_freq,
+             'fisher < 0.5': low_fisher_p_freq,
+             'fisher < 0.05': sig_fisher_p_freq}])
+        table_csv = input_vcf.replace('.vcf', '_table.csv')
+        table_df.to_csv(path_or_buf=table_csv, index=False)
+
+        # output_csv = input_vcf.replace('.vcf', '_summary.csv')
+        # output_allele_count = input_vcf.replace('.vcf', '_allele_count.csv')
+        # summary_df.to_csv(path_or_buf=output_csv, index=False)
+        # allele_count_df.to_csv(path_or_buf=output_allele_count, index=True)
 
 
 if __name__ == '__main__':
