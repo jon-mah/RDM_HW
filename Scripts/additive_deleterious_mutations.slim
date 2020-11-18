@@ -15,9 +15,9 @@ initialize()
   // g1 genomic element type: uses m1 and m2 for all mutations
   initializeGenomicElementType("g1", m1, 1.0);
 
-  // uniform chromosome of length 100 b with zero recombination
-  initializeGenomicElement(g1, 0, 100);
-  initializeRecombinationRate(0);
+  // uniform chromosome of length 25 b with zero recombination
+  initializeGenomicElement(g1, 0, 25);
+  initializeRecombinationRate(1e-8);
 }
 
 // Create a population of 1000 individuals
