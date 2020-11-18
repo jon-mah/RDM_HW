@@ -10,7 +10,7 @@ initialize()
   initializeMutationRate(1e-6);
 
   // m1 mutation type: additive deleterious mutation
-  initializeMutationType("m1", 0.5, "f", -0.1);
+  initializeMutationType("m1", 0.5, "f", 0.0);
 
   // g1 genomic element type: uses m1 and m2 for all mutations
   initializeGenomicElementType("g1", m1, 1.0);
@@ -30,16 +30,16 @@ initialize()
 
 12000
 {
-  // p1.outputSample(10, filePath="../Data/s_0_1_add/sample_10_chrom_" + chrom + ".txt");
-  p1.outputVCFSample(10, filePath="../Data/s_0_1_add/sample_10_chrom_" + chrom + ".vcf");
-  // p1.outputSample(50, filePath="../Data/s_0_1_add/sample_50_chrom_" + chrom + ".txt");
-  p1.outputVCFSample(50, filePath="../Data/s_0_1_add/sample_50_chrom_" + chrom + ".vcf");
-  // p1.outputSample(100, filePath="../Data/s_0_1_add/sample_100_chrom_" + chrom + ".txt");
-  p1.outputVCFSample(100, filePath="../Data/s_0_1_add/sample_100_chrom_" + chrom + ".vcf");
-  // p1.outputSample(500, filePath="../Data/s_0_1_add/sample_500_chrom_" + chrom + ".txt");
-  p1.outputVCFSample(500, filePath="../Data/s_0_1_add/sample_500_chrom_" + chrom + ".vcf");
-  // p1.outputSample(1000, filePath="../Data/s_0_1_add/sample_1000_chrom_" + chrom + ".txt");
-  p1.outputVCFSample(1000, filePath="../Data/s_0_1_add/sample_1000_chrom_" + chrom + ".vcf");
-  // p1.outputSample(10000, filePath="../Data/s_0_1_add/sample_10000_chrom_" + chrom + ".txt");
-  // p1.outputVCFSample(10000, filePath="../Data/s_0_1_add/sample_10000_chrom_" + chrom + ".vcf");
+  // p1.outputSample(10, filePath="../Data/s_0_seed_2/sample_10_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(10, filePath="../Data/s_0_seed_2/sample_10_chrom_" + chrom + ".vcf");
+  // p1.outputSample(50, filePath="../Data/s_0_seed_2/sample_50_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(50, filePath="../Data/s_0_seed_2/sample_50_chrom_" + chrom + ".vcf");
+  // p1.outputSample(100, filePath="../Data/s_0_seed_2/sample_100_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(100, filePath="../Data/s_0_seed_2/sample_100_chrom_" + chrom + ".vcf");
+  // p1.outputSample(500, filePath="../Data/s_0_seed_2/sample_500_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(500, filePath="../Data/s_0_seed_2/sample_500_chrom_" + chrom + ".vcf");
+  // p1.outputSample(1000, filePath="../Data/s_0_seed_2/sample_1000_chrom_" + chrom + ".txt");
+  p1.outputVCFSample(1000, filePath="../Data/s_0_seed_2/sample_1000_chrom_" + chrom + ".vcf");
+  // p1.outputSample(10000, filePath="../Data/s_0_seed_2/sample_10000_chrom_" + chrom + ".txt");
+  // p1.outputVCFSample(10000, filePath="../Data/s_0_seed_2/sample_10000_chrom_" + chrom + ".vcf");
 }

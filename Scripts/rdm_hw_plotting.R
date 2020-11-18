@@ -3,14 +3,14 @@ setwd("C:/Users/jonat/Desktop/GitHub/RDM_HW")
 
 s_0_rec_10 = read.csv('./Data/s_0_rec/sample_10_summary.csv')
 
-s_0_001_add_1000 = read.csv('./Data/s_0_001_add/sample_1000_summary.csv') # 242
-s_0_001_rec_1000 = read.csv('./Data/s_0_001_rec/sample_1000_summary.csv') # 280
-s_0_01_add_1000 = read.csv('./Data/s_0_01_add/sample_1000_summary.csv') # 137
-s_0_01_rec_1000 = read.csv('./Data/s_0_01_rec/sample_1000_summary.csv') # 221
-s_0_1_add_1000 = read.csv('./Data/s_0_1_add/sample_1000_summary.csv') # 60
-s_0_1_rec_1000 = read.csv('./Data/s_0_1_rec/sample_1000_summary.csv') # 153
-s_0_add_1000 = read.csv('./Data/s_0_add/sample_1000_summary.csv') # 266
-s_0_rec_1000 = read.csv('./Data/s_0_rec/sample_1000_summary.csv') # 266
+s_0_001_add_1000 = read.csv('./Data/s_0_001_add/sample_1000_summary.csv') # 0_001_add_1000
+s_0_001_rec_1000 = read.csv('./Data/s_0_001_rec/sample_1000_summary.csv') # 0_001_rec_1000
+s_0_01_add_1000 = read.csv('./Data/s_0_01_add/sample_1000_summary.csv') # 0_01_add_1000
+s_0_01_rec_1000 = read.csv('./Data/s_0_01_rec/sample_1000_summary.csv') # 0_01_rec_1000
+s_0_1_add_1000 = read.csv('./Data/s_0_1_add/sample_1000_summary.csv') # 0_1_add_1000
+s_0_1_rec_1000 = read.csv('./Data/s_0_1_rec/sample_1000_summary.csv') # 0_1_rec_1000
+s_0_add_1000 = read.csv('./Data/s_0_add/sample_1000_summary.csv') # 0_1000
+s_0_rec_1000 = read.csv('./Data/s_0_rec/sample_1000_summary.csv') # 0_1000
 # chi-squared p-values
 chi_p_s_0_add_1000 = s_0_add_1000$chi_p_values
 chi_p_s_0_001_add_1000 = s_0_001_add_1000$chi_p_values
@@ -50,25 +50,26 @@ log_fisher_p_s_0_01_rec_1000 = -log10(sort(fisher_p_s_0_01_rec_1000))
 log_fisher_p_s_0_1_add_1000 = -log10(sort(fisher_p_s_0_1_add_1000))
 log_fisher_p_s_0_1_rec_1000 = -log10(sort(fisher_p_s_0_1_rec_1000))
 
-y_axis_242 = -log10(1:242 / 242)
-y_axis_266 = -log10(1:266 / 266)
-y_axis_280 = -log10(1:280 / 280)
-y_axis_137 = -log10(1:137 / 137)
-y_axis_221 = -log10(1:221 / 221)
-y_axis_60 = -log10(1:60 / 60 )
-y_axis_153 = -log10(1:153 / 153)
+y_axis_0_001_add_1000 = -log10(1:nrow(s_0_001_add_1000) / nrow(s_0_001_add_1000))
+y_axis_0_01_add_1000 = -log10(1:nrow(s_0_01_add_1000) / nrow(s_0_01_add_1000))
+y_axis_0_1_add_1000 = -log10(1:nrow(s_0_1_add_1000) / nrow(s_0_1_add_1000))
+y_axis_0_1000 = -log10(1:nrow(s_0_add_1000) / nrow(s_0_add_1000))
+y_axis_0_001_rec_1000 = -log10(1:nrow(s_0_001_rec_1000) / nrow(s_0_001_rec_1000))
+y_axis_0_01_rec_1000 = -log10(1:nrow(s_0_01_rec_1000) / nrow(s_0_01_rec_1000))
+y_axis_0_1_rec_1000 = -log10(1:nrow(s_0_1_rec_1000) / nrow(s_0_1_rec_1000))
 
-data_242 = data.frame(y_axis_242, log_chi_p_s_0_001_add_1000, log_fisher_p_s_0_001_add_1000)
-data_266 = data.frame(y_axis_266, log_chi_p_s_0_add_1000, log_chi_p_s_0_rec_1000,log_fisher_p_s_0_add_1000, log_fisher_p_s_0_rec_1000)
-data_280 = data.frame(y_axis_280, log_chi_p_s_0_001_rec_1000, log_fisher_p_s_0_001_rec_1000)
-data_137 = data.frame(y_axis_137, log_chi_p_s_0_01_add_1000, log_fisher_p_s_0_01_add_1000)
-data_60 = data.frame(y_axis_60, log_chi_p_s_0_1_add_1000, log_fisher_p_s_0_1_add_1000)
-data_221 = data.frame(y_axis_221, log_chi_p_s_0_01_rec_1000, log_fisher_p_s_0_01_rec_1000)
-data_153 = data.frame(y_axis_153, log_chi_p_s_0_1_rec_1000, log_fisher_p_s_0_1_rec_1000)
 
-p_242 = ggplot(data=data_242, aes(y=log_chi_p_s_0_001_add_1000, x=y_axis_242, color='chi_additive')) + 
+data_0_001_add_1000 = data.frame(y_axis_0_001_add_1000, log_chi_p_s_0_001_add_1000, log_fisher_p_s_0_001_add_1000)
+data_0_1000 = data.frame(y_axis_0_1000, log_chi_p_s_0_add_1000, log_chi_p_s_0_rec_1000,log_fisher_p_s_0_add_1000, log_fisher_p_s_0_rec_1000)
+data_0_001_rec_1000 = data.frame(y_axis_0_001_rec_1000, log_chi_p_s_0_001_rec_1000, log_fisher_p_s_0_001_rec_1000)
+data_0_01_add_1000 = data.frame(y_axis_0_01_add_1000, log_chi_p_s_0_01_add_1000, log_fisher_p_s_0_01_add_1000)
+data_0_1_add_1000 = data.frame(y_axis_0_1_add_1000, log_chi_p_s_0_1_add_1000, log_fisher_p_s_0_1_add_1000)
+data_0_01_rec_1000 = data.frame(y_axis_0_01_rec_1000, log_chi_p_s_0_01_rec_1000, log_fisher_p_s_0_01_rec_1000)
+data_0_1_rec_1000 = data.frame(y_axis_0_1_rec_1000, log_chi_p_s_0_1_rec_1000, log_fisher_p_s_0_1_rec_1000)
+
+p_0_001_add_1000 = ggplot(data=data_0_001_add_1000, aes(y=log_chi_p_s_0_001_add_1000, x=y_axis_0_001_add_1000, color='chi_additive')) + 
   geom_point() +
-  geom_point(aes(y=log_fisher_p_s_0_001_add_1000, x=y_axis_242, color='fisher_additive')) +
+  geom_point(aes(y=log_fisher_p_s_0_001_add_1000, x=y_axis_0_001_add_1000, color='fisher_additive')) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green'),
@@ -80,11 +81,11 @@ p_242 = ggplot(data=data_242, aes(y=log_chi_p_s_0_001_add_1000, x=y_axis_242, co
   xlim(0, 4) +
   ylim(0, 4) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_242
+p_0_001_add_1000
 
-p_280 = ggplot(data=data_280, aes(y=log_chi_p_s_0_001_rec_1000, x=y_axis_280, color='chi_recessive')) + 
+p_0_001_rec_1000 = ggplot(data=data_0_001_rec_1000, aes(y=log_chi_p_s_0_001_rec_1000, x=y_axis_0_001_rec_1000, color='chi_recessive')) + 
   geom_point() +
-  geom_point(aes(y=log_fisher_p_s_0_001_rec_1000, x=y_axis_280, color='fisher_recessive')) +
+  geom_point(aes(y=log_fisher_p_s_0_001_rec_1000, x=y_axis_0_001_rec_1000, color='fisher_recessive')) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green'),
@@ -96,13 +97,13 @@ p_280 = ggplot(data=data_280, aes(y=log_chi_p_s_0_001_rec_1000, x=y_axis_280, co
   xlim(0, 3) +
   ylim(0, 3) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_280
+p_0_001_rec_1000
 
-p_266 = ggplot(data=data_266, aes(y=log_chi_p_s_0_add_1000, x=y_axis_266, color='chi_additive')) + 
+p_0_1000 = ggplot(data=data_0_1000, aes(y=log_chi_p_s_0_add_1000, x=y_axis_0_1000, color='chi_additive')) + 
   geom_point(shape=3) +
-  geom_point(aes(y=log_fisher_p_s_0_add_1000, x=y_axis_266, color='fisher_additive'), shape=3) +
-  geom_point(aes(y=log_chi_p_s_0_rec_1000, x=y_axis_266, color='chi_recessive'), shape=4) +
-  geom_point(aes(y=log_fisher_p_s_0_rec_1000, x=y_axis_266, color='fisher_recessive'), shape=4) +
+  geom_point(aes(y=log_fisher_p_s_0_add_1000, x=y_axis_0_1000, color='fisher_additive'), shape=3) +
+  geom_point(aes(y=log_chi_p_s_0_rec_1000, x=y_axis_0_1000, color='chi_recessive'), shape=4) +
+  geom_point(aes(y=log_fisher_p_s_0_rec_1000, x=y_axis_0_1000, color='fisher_recessive'), shape=4) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green', 'purple', 'orange'),
@@ -114,11 +115,11 @@ p_266 = ggplot(data=data_266, aes(y=log_chi_p_s_0_add_1000, x=y_axis_266, color=
   xlim(0, 4) +
   ylim(0, 4) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_266
+p_0_1000
 
-p_137 = ggplot(data=data_137, aes(y=log_chi_p_s_0_01_add_1000, x=y_axis_137, color='chi_additive')) + 
+p_0_01_add_1000 = ggplot(data=data_0_01_add_1000, aes(y=log_chi_p_s_0_01_add_1000, x=y_axis_0_01_add_1000, color='chi_additive')) + 
   geom_point() +
-  geom_point(aes(y=log_fisher_p_s_0_01_add_1000, x=y_axis_137, color='fisher_additive')) +
+  geom_point(aes(y=log_fisher_p_s_0_01_add_1000, x=y_axis_0_01_add_1000, color='fisher_additive')) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green'),
@@ -130,11 +131,11 @@ p_137 = ggplot(data=data_137, aes(y=log_chi_p_s_0_01_add_1000, x=y_axis_137, col
   xlim(0, 4) +
   ylim(0, 4) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_137
+p_0_01_add_1000
 
-p_60 = ggplot(data=data_60, aes(y=log_chi_p_s_0_1_add_1000, x=y_axis_60, color='chi_additive')) + 
+p_0_1_add_1000 = ggplot(data=data_0_1_add_1000, aes(y=log_chi_p_s_0_1_add_1000, x=y_axis_0_1_add_1000, color='chi_additive')) + 
   geom_point() +
-  geom_point(aes(y=log_fisher_p_s_0_1_add_1000, x=y_axis_60, color='fisher_additive')) +
+  geom_point(aes(y=log_fisher_p_s_0_1_add_1000, x=y_axis_0_1_add_1000, color='fisher_additive')) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green'),
@@ -146,11 +147,11 @@ p_60 = ggplot(data=data_60, aes(y=log_chi_p_s_0_1_add_1000, x=y_axis_60, color='
   xlim(0, 2) + 
   ylim(0, 2) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_60
+p_0_1_add_1000
 
-p_153 = ggplot(data=data_153, aes(y=log_chi_p_s_0_1_rec_1000, x=y_axis_153, color='chi_recessive')) + 
+p_0_1_rec_1000 = ggplot(data=data_0_1_rec_1000, aes(y=log_chi_p_s_0_1_rec_1000, x=y_axis_0_1_rec_1000, color='chi_recessive')) + 
   geom_point() +
-  geom_point(aes(y=log_fisher_p_s_0_1_rec_1000, x=y_axis_153, color='fisher_recessive')) +
+  geom_point(aes(y=log_fisher_p_s_0_1_rec_1000, x=y_axis_0_1_rec_1000, color='fisher_recessive')) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green'),
@@ -162,11 +163,11 @@ p_153 = ggplot(data=data_153, aes(y=log_chi_p_s_0_1_rec_1000, x=y_axis_153, colo
   xlim(0, 3)+ 
   ylim(0, 3) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_153
+p_0_1_rec_1000
 
-p_221 = ggplot(data=data_221, aes(y=log_chi_p_s_0_01_rec_1000, x=y_axis_221, color='chi_recessive')) + 
+p_0_01_rec_1000 = ggplot(data=data_0_01_rec_1000, aes(y=log_chi_p_s_0_01_rec_1000, x=y_axis_0_01_rec_1000, color='chi_recessive')) + 
   geom_point() +
-  geom_point(aes(y=log_fisher_p_s_0_01_rec_1000, x=y_axis_221, color='fisher_recessive')) +
+  geom_point(aes(y=log_fisher_p_s_0_01_rec_1000, x=y_axis_0_01_rec_1000, color='fisher_recessive')) +
   xlab('-log10 of expected p-values') + 
   ylab('-log10 of observed p-values') + 
   scale_color_manual(values=c('blue', 'green'),
@@ -178,7 +179,7 @@ p_221 = ggplot(data=data_221, aes(y=log_chi_p_s_0_01_rec_1000, x=y_axis_221, col
   xlim(0, 3) +
   ylim(0, 3) +
   geom_hline(color = 'red', yintercept = -log10(0.05))
-p_221
+p_0_01_rec_1000
 
 s_0_rec_10$allele_count = as.factor(s_0_rec_10$allele_count)
 p_fisher_boxplot = ggplot(data=s_0_rec_10, aes(x=allele_count, y=fisher_p_values)) + 

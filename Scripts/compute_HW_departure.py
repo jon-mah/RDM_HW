@@ -172,16 +172,12 @@ class ComputeHardyWeinbergDeparture():
         low_chi_p_freq = low_chi_p_count / len(chi_p_values)
         sig_chi_p_freq = sig_chi_p_count / len(chi_p_values)
 
-        # print('There are ' + str(snp_count) + ' SNPs in this sample.')
-        # print('The minimum chi-squared p-value is ' +
-        #       str(chi_p_values[0]) + '.')
-        # print(chi_p_values)
-        # print('The proportion of chi-squared p-values below 0.5 is ' +
-        #       str(low_chi_p_freq))
-        # print('The chi-squared p-values are : ' + str(chi_p_values) + '.\n')
-
         # Fisher's exact test for HWE
+        # print(str(fisher_p_values))
+        # for element in chrom:
+        #     print(element)
         fisher_p_values.sort()
+        print(fisher_p_values[0])
         low_fisher_p_count = 0
         sig_fisher_p_count = 0
         for val in fisher_p_values:
@@ -221,10 +217,10 @@ class ComputeHardyWeinbergDeparture():
         table_csv = input_vcf.replace('.vcf', '_table.csv')
         table_df.to_csv(path_or_buf=table_csv, index=False)
 
-        # output_csv = input_vcf.replace('.vcf', '_summary.csv')
-        # output_allele_count = input_vcf.replace('.vcf', '_allele_count.csv')
-        # summary_df.to_csv(path_or_buf=output_csv, index=False)
-        # allele_count_df.to_csv(path_or_buf=output_allele_count, index=True)
+        output_csv = input_vcf.replace('.vcf', '_summary.csv')
+        output_allele_count = input_vcf.replace('.vcf', '_allele_count.csv')
+        summary_df.to_csv(path_or_buf=output_csv, index=False)
+        allele_count_df.to_csv(path_or_buf=output_allele_count, index=True)
 
 
 if __name__ == '__main__':
