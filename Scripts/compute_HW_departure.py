@@ -80,9 +80,9 @@ class ComputeHardyWeinbergDeparture():
         allele_count = []
         num_heterozygotes = []
         num_homozygotes = []
-        chi_p_values = []
+        chi_pr_values = []
         chi_sq_values = []
-        fisher_p_values = []
+        fisher_pr_values = []
         snp_count = 0
         f = open(input_vcf, 'r')
         allele_count_dict = {}
@@ -113,7 +113,7 @@ class ComputeHardyWeinbergDeparture():
                     exp_homo_b = allele_freq_b ** 2 * total_allele_count / 2
                     f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
                     f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
-                    chi_p_values.append(stats.chisquare(f_obs, f_exp)[1])
+                    chi_pr_values.append(stats.chisquare(f_obs, f_exp)[1])
                     chi_sq_values.append(stats.chisquare(f_obs, f_exp)[0])
 
                     # Fisher's exact test for HWE
@@ -125,7 +125,7 @@ class ComputeHardyWeinbergDeparture():
                         math.factorial(obs_hetero) * \
                         math.factorial(obs_homo_b) * \
                         math.factorial(2 * num_ind)
-                    fisher_p_values.append(
+                    fisher_pr_values.append(
                         fisher_numerator / fisher_denominator)
 
                     # Compute summary information for dataframe
@@ -150,51 +150,54 @@ class ComputeHardyWeinbergDeparture():
             orient='index',
             columns=['heterozygotes', 'homozygotes'])
         allele_count_df.rename_axis('allele_count', axis='columns')
+        sorted_chi_pr = chi_pr_values.copy()
+        sorted_chi_pr.sort()
+
 
         summary_df = pd.DataFrame({'chrom': chrom,
                                    'pos': pos,
                                    'allele_count': allele_count,
                                    'num_heterozygotes': num_heterozygotes,
                                    'num_homozygotes': num_homozygotes,
-                                   'chi_p_values': chi_p_values,
-                                   'fisher_p_values': fisher_p_values})
+                                   'chi_pr_values': chi_pr_values,
+                                   'fisher_pr_values': fisher_pr_values})
 
         # Chi-squared test for HWE
-        chi_p_values.sort()
+        chi_pr_values.sort()
         chi_sq_values.sort()
         low_chi_p_count = 0
         sig_chi_p_count = 0
-        for val in chi_p_values:
+        for val in chi_pr_values:
             if val <= 0.5:
                 low_chi_p_count += 1
             if val <= 0.05:
                 sig_chi_p_count += 1
-        low_chi_p_freq = low_chi_p_count / len(chi_p_values)
-        sig_chi_p_freq = sig_chi_p_count / len(chi_p_values)
+        low_chi_p_freq = low_chi_p_count / len(chi_pr_values)
+        sig_chi_p_freq = sig_chi_p_count / len(chi_pr_values)
 
         # Fisher's exact test for HWE
-        # print(str(fisher_p_values))
-        # for element in chrom:
-        #     print(element)
-        fisher_p_values.sort()
-        print(fisher_p_values[0])
+        # print(str(fisher_pr_values))
+        for element in chrom:
+            print(element)
+        fisher_pr_values.sort()
+        # print(fisher_pr_values[0])
         low_fisher_p_count = 0
         sig_fisher_p_count = 0
-        for val in fisher_p_values:
+        for val in fisher_pr_values:
             if val <= 0.5:
                 low_fisher_p_count += 1
             if val <= 0.05:
                 sig_fisher_p_count += 1
-        low_fisher_p_freq = low_fisher_p_count / len(fisher_p_values)
-        sig_fisher_p_freq = sig_fisher_p_count / len(fisher_p_values)
+        low_fisher_p_freq = low_fisher_p_count / len(fisher_pr_values)
+        sig_fisher_p_freq = sig_fisher_p_count / len(fisher_pr_values)
 
         with open('../Data/output.txt', 'a') as f:
             f.write('Outputting summary results for ' + str(input_vcf) + '.\n')
             f.write('There are ' + str(snp_count) + ' SNPs in this sample.\n')
             f.write('The minimum chi-squared p-value is ' +
-                    str(chi_p_values[0]) + '.\n')
+                    str(chi_pr_values[0]) + '.\n')
             f.write('The minimum Fisher p-value is ' +
-                    str(fisher_p_values[0]) + '.\n')
+                    str(fisher_pr_values[0]) + '.\n')
             f.write('The proportion of chi-squared p-values below 0.5 is ' +
                     str(low_chi_p_freq) + '.\n')
             f.write('The proportion of chi-squared p-values below 0.05 is ' +
@@ -208,8 +211,8 @@ class ComputeHardyWeinbergDeparture():
         table_df = pd.DataFrame.from_records([
             {'sample_size': num_ind,
              'snp_count': snp_count,
-             'minimum_chi_p': chi_p_values[0],
-             'minimum_fisher_p': fisher_p_values[0],
+             'minimum_chi_p': chi_pr_values[0],
+             'minimum_fisher_p': fisher_pr_values[0],
              'chi < 0.5': low_chi_p_freq,
              'chi < 0.05': sig_chi_p_freq,
              'fisher < 0.5': low_fisher_p_freq,
