@@ -260,7 +260,8 @@ class ComputeHardyWeinbergDeparture():
             'exp_homo_b': exp_homo_b_list})
 
         n_homo_csv = input_vcf.replace('.vcf', '_avg_vs_exp_homo.csv')
-        n_homo_df.to_csv(path_or_buf=n_homo_csv, index=False)
+        print(n_homo_df)
+        n_homo_df.to_csv(path_or_buf=n_homo_csv, index=True)
 
         allele_count_df = pd.DataFrame.from_dict(
             allele_count_dict,
