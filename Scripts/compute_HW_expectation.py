@@ -114,8 +114,9 @@ class ComputeHardyWeinbergExpectation():
             if num_ind - n_ton + i >= 0:
                 combination_vector = [num_ind - n_ton + i, n_ton - 2 * i, i]
                 combination_vectors.append(combination_vector)
-                chi_pr = self.compute_chi_p(num_ind, 2 * num_ind - n_ton, n_ton,
-                                            num_ind - n_ton + i, n_ton - 2 * i, i)
+                chi_pr = self.compute_chi_p(num_ind, 2 * num_ind - n_ton,
+                                            n_ton, num_ind - n_ton + i,
+                                            n_ton - 2 * i, i)
                 chi_pr_values.append(chi_pr)
                 fisher_pr = self.compute_fisher_p(num_ind,
                                                   2 * num_ind - n_ton,
@@ -175,6 +176,13 @@ class ComputeHardyWeinbergExpectation():
                                    'fisher_p_n_homo_geq': fisher_p_n_homo_geq,
                                    'fisher_p_two_sided': fisher_p_two_sided})
         print(summary_df)
+        exp_homo_b = 0
+        for i in range(len(combination_vectors)):
+            exp_homo_b += list(combination_vectors[i])[2] * fisher_pr_values[i]
+
+        print('The expected number of minor allele homozygotes given a ' +
+              str(n_ton) + '-ton in a sample of ' + str(num_ind) + ' is ' +
+              str(exp_homo_b) + '.')
 
         if (compute_by_hand):
             # Doubletons

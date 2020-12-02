@@ -8,6 +8,7 @@ import math
 import sys
 import os
 import argparse
+import ast
 from scipy import stats
 
 import pandas as pd
@@ -62,19 +63,6 @@ class ComputeHardyWeinbergDeparture():
     def compute_fisher_p(self, num_ind, allele_count_a, allele_count_b,
                          obs_homo_a, obs_hetero, obs_homo_b):
         """Return p-value for Fisher's exact test."""
-        # Fisher's exact test for HWE
-        # if allele_count_a < 0:
-        #     print(allele_count_a)
-        # if allele_count_b < 0:
-        #     print(allele_count_a)
-        if obs_homo_a < 0:
-            print(obs_homo_a)
-        # if obs_hetero < 0:
-        #     print(obs_hetero)
-        # if obs_homo_b < 0:
-        #     print(obs_homo_b)
-        # if (2 * num_ind) <= 0:
-        #     print(2 * num_ind)
         fisher_numerator = math.factorial(num_ind) * \
             math.factorial(allele_count_a) * \
             math.factorial(allele_count_b) * \
@@ -125,8 +113,11 @@ class ComputeHardyWeinbergDeparture():
         fisher_p_n_homo_geq = []
         fisher_p_two_sided = []
         snp_count = 0
-        f = open(input_vcf, 'r')
         allele_count_dict = {}
+        n_homo_dict = {}
+        exp_homo_dict = {}
+
+        f = open(input_vcf, 'r')
 
         for line in f:
             if ";MT=1;" in line:
@@ -238,37 +229,38 @@ class ComputeHardyWeinbergDeparture():
                         this_fisher_p_n_homo_leq[this_index])
                     fisher_p_n_homo_geq.append(
                         this_fisher_p_n_homo_geq[this_index])
-                    fisher_p_two_sided.append(this_fisher_p_two_sided[this_index])
+                    fisher_p_two_sided.append(
+                        this_fisher_p_two_sided[this_index])
 
-                    ###
-                    # allele_count_a = 2 * obs_homo_a + obs_hetero
-                    # allele_count_b = 2 * obs_homo_b + obs_hetero
-                    # total_allele_count = allele_count_a + allele_count_b
-                    # num_ind = total_allele_count / 2
+                    exp_homo_b = 0
+                    for i in range(len(this_combination_vectors)):
+                        exp_homo_b += ast.literal_eval(
+                            this_combination_vectors[i])[2] * \
+                            this_fisher_pr_values[i]
 
-                    # chi-squared
-                    # allele_freq_a = allele_count_a / total_allele_count
-                    # allele_freq_b = allele_count_b / total_allele_count
-                    # exp_homo_a = allele_freq_a ** 2 * total_allele_count / 2
-                    # exp_hetero = allele_freq_a * allele_freq_b * \
-                    #     total_allele_count
-                    # exp_homo_b = allele_freq_b ** 2 * total_allele_count / 2
-                    # f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
-                    # f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
-                    # chi_pr_values.append(stats.chisquare(f_obs, f_exp)[1])
-
-                    # Fisher's exact test for HWE
-                    # fisher_numerator = math.factorial(num_ind) * \
-                    #     math.factorial(allele_count_a) * \
-                    #     math.factorial(allele_count_b) * \
-                    #     2 ** obs_hetero
-                    # fisher_denominator = math.factorial(obs_homo_a) * \
-                    #    math.factorial(obs_hetero) * \
-                    #     math.factorial(obs_homo_b) * \
-                    #     math.factorial(2 * num_ind)
-                    # fisher_pr_values.append(
-                    #     fisher_numerator / fisher_denominator)
+                    if n_ton in n_homo_dict.keys():
+                        n_homo_dict[n_ton].append(obs_homo_b)
+                    else:
+                        n_homo_dict[n_ton] = [obs_homo_b]
+                        exp_homo_dict[n_ton] = exp_homo_b
         f.close()
+
+        n_ton_list = []
+        avg_homo_b_list = []
+        exp_homo_b_list = []
+        for key in sorted(n_homo_dict.keys()):
+            n_ton_list.append(key)
+            avg_homo_b_list.append(
+                sum(n_homo_dict[key]) / len(n_homo_dict[key]))
+            exp_homo_b_list.append(exp_homo_dict[key])
+
+        n_homo_df = pd.DataFrame({
+            'n_ton': n_ton_list,
+            'avg_homo_b': avg_homo_b_list,
+            'exp_homo_b': exp_homo_b_list})
+
+        n_homo_csv = input_vcf.replace('.vcf', '_avg_vs_exp_homo.csv')
+        n_homo_df.to_csv(path_or_buf=n_homo_csv, index=False)
 
         allele_count_df = pd.DataFrame.from_dict(
             allele_count_dict,
@@ -303,17 +295,16 @@ class ComputeHardyWeinbergDeparture():
         low_chi_p_freq = low_chi_p_count / len(chi_pr_values)
         sig_chi_p_freq = sig_chi_p_count / len(chi_pr_values)
 
-        fisher_p_n_homo_geq.sort()
-        # print(fisher_pr_values[0])
+        fisher_p_n_homo_leq.sort()
         low_fisher_p_count = 0
         sig_fisher_p_count = 0
-        for val in fisher_p_n_homo_geq:
+        for val in fisher_p_n_homo_leq:
             if val <= 0.5:
                 low_fisher_p_count += 1
             if val <= 0.05:
                 sig_fisher_p_count += 1
-        low_fisher_p_freq = low_fisher_p_count / len(fisher_p_n_homo_geq)
-        sig_fisher_p_freq = sig_fisher_p_count / len(fisher_p_n_homo_geq)
+        low_fisher_p_freq = low_fisher_p_count / len(fisher_p_n_homo_leq)
+        sig_fisher_p_freq = sig_fisher_p_count / len(fisher_p_n_homo_leq)
 
         with open('../Data/output.txt', 'a') as f:
             f.write('Outputting summary results for ' + str(input_vcf) + '.\n')
@@ -321,7 +312,7 @@ class ComputeHardyWeinbergDeparture():
             f.write('The minimum chi-squared p-value is ' +
                     str(chi_pr_values[0]) + '.\n')
             f.write('The minimum Fisher p-value is ' +
-                    str(fisher_p_n_homo_geq[0]) + '.\n')
+                    str(fisher_p_n_homo_leq[0]) + '.\n')
             f.write('The proportion of chi-squared p-values below 0.5 is ' +
                     str(low_chi_p_freq) + '.\n')
             f.write('The proportion of chi-squared p-values below 0.05 is ' +
