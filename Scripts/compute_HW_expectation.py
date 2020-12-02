@@ -105,26 +105,23 @@ class ComputeHardyWeinbergExpectation():
         n_ton = args['n_ton']
         compute_by_hand = args['compute_by_hand']
 
-        if n_ton > num_ind:
-            raise Exception('Sorry, the allele class must be less than the '
-                            'number of individuals at this time.')
-
         n_combinations = int(n_ton / 2) + 1
 
         combination_vectors = []
         fisher_pr_values = []
         chi_pr_values = []
         for i in range(n_combinations):
-            combination_vector = [num_ind - n_ton + i, n_ton - 2 * i, i]
-            combination_vectors.append(combination_vector)
-            chi_pr = self.compute_chi_p(num_ind, 2 * num_ind - n_ton, n_ton,
-                                        num_ind - n_ton + i, n_ton - 2 * i, i)
-            chi_pr_values.append(chi_pr)
-            fisher_pr = self.compute_fisher_p(num_ind,
-                                              2 * num_ind - n_ton,
-                                              n_ton, num_ind - n_ton + i,
-                                              n_ton - 2 * i, i)
-            fisher_pr_values.append(fisher_pr)
+            if num_ind - n_ton + i >= 0:
+                combination_vector = [num_ind - n_ton + i, n_ton - 2 * i, i]
+                combination_vectors.append(combination_vector)
+                chi_pr = self.compute_chi_p(num_ind, 2 * num_ind - n_ton, n_ton,
+                                            num_ind - n_ton + i, n_ton - 2 * i, i)
+                chi_pr_values.append(chi_pr)
+                fisher_pr = self.compute_fisher_p(num_ind,
+                                                  2 * num_ind - n_ton,
+                                                  n_ton, num_ind - n_ton + i,
+                                                  n_ton - 2 * i, i)
+                fisher_pr_values.append(fisher_pr)
 
         # One sided p-value with less than or equal homozygotes.
         chi_p_n_homo_leq = []

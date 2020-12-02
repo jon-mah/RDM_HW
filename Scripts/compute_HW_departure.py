@@ -142,7 +142,7 @@ class ComputeHardyWeinbergDeparture():
                 allele_count_b = 2 * obs_homo_b + obs_hetero
                 total_allele_count = allele_count_a + allele_count_b
                 num_ind = int(total_allele_count / 2)
-                if n_ton >= 2 and n_ton <= num_ind:
+                if n_ton >= 2:
                     # Compute summary statistics for detecing HWE departure
                     snp_count += 1
 
@@ -164,13 +164,12 @@ class ComputeHardyWeinbergDeparture():
                     # Compute Hardy-Weinberg expectation
                     this_combination = str([obs_homo_a,
                                             obs_hetero, obs_homo_b])
-                    ###
                     n_combinations = int(n_ton / 2) + 1
                     this_combination_vectors = []
                     this_fisher_pr_values = []
                     this_chi_pr_values = []
                     for i in range(n_combinations):
-                        if n_ton <= num_ind:
+                        if num_ind - n_ton + i >= 0:
                             combination_vector = str([num_ind - n_ton + i,
                                                       n_ton - 2 * i, i])
                             this_combination_vectors.append(
@@ -181,9 +180,8 @@ class ComputeHardyWeinbergDeparture():
                             fisher_pr = self.compute_fisher_p(
                                 num_ind, 2 * num_ind - n_ton, n_ton,
                                 num_ind - n_ton + i, n_ton - 2 * i, i)
-
-                        this_chi_pr_values.append(chi_pr)
-                        this_fisher_pr_values.append(fisher_pr)
+                            this_chi_pr_values.append(chi_pr)
+                            this_fisher_pr_values.append(fisher_pr)
 
                     # One sided p-value with less than or equal homozygotes.
                     this_chi_p_n_homo_leq = []
