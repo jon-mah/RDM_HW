@@ -10,7 +10,7 @@ initialize()
   initializeMutationRate(1e-6);
 
   // m1 mutation type: additive deleterious mutation
-  initializeMutationType("m1", 0.5, "f", 0.0);
+  initializeMutationType("m1", 0.5, "f", -0.001);
 
   // g1 genomic element type: uses m1 and m2 for all mutations
   initializeGenomicElementType("g1", m1, 1.0);

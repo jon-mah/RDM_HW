@@ -6,7 +6,7 @@
 #$ -l h_vmem=50G
 
 # INPUT ARGUMENTS
-s_value=s_0_001_rec
+s_value=s_0_001_add
 sample_size=5000
 prefix="../Data/${s_value}/sample_${sample_size}" # Output prefix, and input prefix of given vcf
 
