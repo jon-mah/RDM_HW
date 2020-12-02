@@ -1,71 +1,18 @@
+#!/bin/bash
+#$ -t 1-400:1
+#$ -cwd
+#$ -V
+#$ -l h_data=10G
+#$ -l h_rt=1:00:00
+
+# INPUT ARGUMENTS
+s_value=s_0_rec
+
 # s_0_rec
-python compute_HW_departure.py ../Data/s_0_rec/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_rec/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_rec/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_rec/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_rec/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_rec/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_rec/sample_10000.vcf
-
-# s_0_001_rec
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_001_rec/sample_10000.vcf
-
-# s_0_01_rec
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_01_rec/sample_10000.vcf
-
-# s_0_1_rec
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_1_rec/sample_10000.vcf
-
-# s_0_add
-python compute_HW_departure.py ../Data/s_0_add/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_add/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_add/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_add/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_add/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_add/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_add/sample_10000.vcf
-
-# s_0_001_add
-python compute_HW_departure.py ../Data/s_0_001_add/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_001_add/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_001_add/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_001_add/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_001_add/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_001_add/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_001_add/sample_10000.vcf
-
-# s_0_01_add
-python compute_HW_departure.py ../Data/s_0_01_add/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_01_add/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_01_add/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_01_add/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_01_add/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_01_add/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_01_add/sample_10000.vcf
-
-# s_0_1_add
-python compute_HW_departure.py ../Data/s_0_1_add/sample_10.vcf
-python compute_HW_departure.py ../Data/s_0_1_add/sample_50.vcf
-python compute_HW_departure.py ../Data/s_0_1_add/sample_100.vcf
-python compute_HW_departure.py ../Data/s_0_1_add/sample_500.vcf
-python compute_HW_departure.py ../Data/s_0_1_add/sample_1000.vcf
-python compute_HW_departure.py ../Data/s_0_1_add/sample_5000.vcf
-python compute_HW_departure.py ../Data/s_0_1_add/sample_10000.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_10.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_50.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_100.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_500.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_1000.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_5000.vcf
+python compute_HW_departure.py ../Data/${s_value}/sample_10000.vcf
