@@ -3,10 +3,10 @@
 #$ -cwd
 #$ -V
 #$ -l h_data=10G
-#$ -l h_rt=0:20:00
+#$ -l h_rt=2:00:00
 
 # INPUT ARGUMENTS
-seed=3
+seed=1
 
 # If `SLiM` is not an executable, then comment out the next line.
 slim -d chrom=$SGE_TASK_ID -d init_seed=$seed recessive_deleterious_mutations.slim

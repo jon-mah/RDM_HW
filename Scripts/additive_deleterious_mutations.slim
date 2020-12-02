@@ -26,9 +26,9 @@ initialize()
   sim.addSubpop("p1", 10000);
 }
 
-// Let population burn in for 12 * N_a generations
+// Let population burn in for 10 * N_a generations
 
-120000
+100000
 {
   // p1.outputSample(10, filePath="../Data/s_0_001_add/sample_10_chrom_" + chrom + ".txt");
   p1.outputVCFSample(10, filePath="../Data/s_0_001_add/sample_10_chrom_" + chrom + ".vcf");
