@@ -1,0 +1,16 @@
+##fileformat=VCFv4.2
+##fileDate=20201118
+##source=SLiM
+##INFO=<ID=MID,Number=.,Type=Integer,Description="Mutation ID in SLiM">
+##INFO=<ID=S,Number=.,Type=Float,Description="Selection Coefficient">
+##INFO=<ID=DOM,Number=.,Type=Float,Description="Dominance">
+##INFO=<ID=PO,Number=.,Type=Integer,Description="Population of Origin">
+##INFO=<ID=GO,Number=.,Type=Integer,Description="Generation of Origin">
+##INFO=<ID=MT,Number=.,Type=Integer,Description="Mutation Type">
+##INFO=<ID=AC,Number=.,Type=Integer,Description="Allele Count">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
+##INFO=<ID=MULTIALLELIC,Number=0,Type=Flag,Description="Multiallelic">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	i0	i1	i2	i3	i4	i5	i6	i7	i8	i9
+1	9	.	A	T	1000	PASS	MID=579;S=0;DOM=0;PO=1;GO=11029;MT=1;AC=2;DP=1000	GT	0|0	0|1	0|0	0|0	0|0	0|0	0|0	0|0	1|0	0|0
+1	20	.	A	T	1000	PASS	MID=590;S=0;DOM=0;PO=1;GO=11191;MT=1;AC=8;DP=1000	GT	1|0	0|0	0|0	0|1	1|1	1|1	0|0	1|0	0|0	0|1

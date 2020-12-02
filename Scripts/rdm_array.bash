@@ -6,7 +6,7 @@
 #$ -l h_rt=0:20:00
 
 # INPUT ARGUMENTS
-seed=1
+seed=3
 
 # If `SLiM` is not an executable, then comment out the next line.
 slim -d chrom=$SGE_TASK_ID -d init_seed=$seed recessive_deleterious_mutations.slim
