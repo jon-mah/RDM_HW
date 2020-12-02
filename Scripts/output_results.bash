@@ -6,7 +6,7 @@
 #$ -l h_rt=1:00:00
 
 # INPUT ARGUMENTS
-s_value=s_0_1_rec
+s_value=s_0_001_rec
 
 # s_0_rec
 python compute_HW_departure.py ../Data/${s_value}/sample_10.vcf
