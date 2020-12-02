@@ -889,3 +889,534 @@ The proportion of chi-squared p-values below 0.05 is 0.06766917293233082
 .The proportion of Fisher p-values below 0.5 is 0.5150375939849624.
 The proportion of Fisher p-values below 0.05 is 0.20676691729323307
 .
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 114 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.14035087719298245.
+The proportion of chi-squared p-values below 0.05 is 0.017543859649122806
+.The proportion of Fisher p-values below 0.5 is 0.34210526315789475.
+The proportion of Fisher p-values below 0.05 is 0.008771929824561403
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.38271604938271603.
+The proportion of Fisher p-values below 0.05 is 0.012345679012345678
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.38271604938271603.
+The proportion of Fisher p-values below 0.05 is 0.012345679012345678
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.38271604938271603.
+The proportion of Fisher p-values below 0.05 is 0.012345679012345678
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.38271604938271603.
+The proportion of Fisher p-values below 0.05 is 0.012345679012345678
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.38271604938271603.
+The proportion of Fisher p-values below 0.05 is 0.012345679012345678
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.030483448440104786.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.38271604938271603.
+The proportion of Fisher p-values below 0.05 is 0.012345679012345678
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.05263157894736842.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.2345679012345679.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_rec/sample_50.vcf.
+There are 147 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.009891512106336774.
+The proportion of chi-squared p-values below 0.5 is 0.19047619047619047.
+The proportion of chi-squared p-values below 0.05 is 0.02040816326530612
+.The proportion of Fisher p-values below 0.5 is 0.2585034013605442.
+The proportion of Fisher p-values below 0.05 is 0.027210884353741496
+.
+Outputting summary results for ../Data/s_0_rec/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.05263157894736842.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.2345679012345679.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_rec/sample_50.vcf.
+There are 147 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.009891512106336774.
+The proportion of chi-squared p-values below 0.5 is 0.19047619047619047.
+The proportion of chi-squared p-values below 0.05 is 0.02040816326530612
+.The proportion of Fisher p-values below 0.5 is 0.2585034013605442.
+The proportion of Fisher p-values below 0.05 is 0.027210884353741496
+.
+Outputting summary results for ../Data/s_0_rec/sample_100.vcf.
+There are 174 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.0008120211029254568.
+The proportion of chi-squared p-values below 0.5 is 0.14367816091954022.
+The proportion of chi-squared p-values below 0.05 is 0.034482758620689655
+.The proportion of Fisher p-values below 0.5 is 0.20114942528735633.
+The proportion of Fisher p-values below 0.05 is 0.040229885057471264
+.
+Outputting summary results for ../Data/s_0_rec/sample_500.vcf.
+There are 221 SNPs in this sample.
+The minimum chi-squared p-value is 0.0025672565677917637.
+The minimum Fisher p-value is 0.002426490945758831.
+The proportion of chi-squared p-values below 0.5 is 0.14479638009049775.
+The proportion of chi-squared p-values below 0.05 is 0.01809954751131222
+.The proportion of Fisher p-values below 0.5 is 0.248868778280543.
+The proportion of Fisher p-values below 0.05 is 0.027149321266968326
+.
+Outputting summary results for ../Data/s_0_rec/sample_1000.vcf.
+There are 256 SNPs in this sample.
+The minimum chi-squared p-value is 3.2112353435968775e-19.
+The minimum Fisher p-value is 7.615191766438663e-11.
+The proportion of chi-squared p-values below 0.5 is 0.16796875.
+The proportion of chi-squared p-values below 0.05 is 0.04296875
+.The proportion of Fisher p-values below 0.5 is 0.23046875.
+The proportion of Fisher p-values below 0.05 is 0.05078125
+.
+Outputting summary results for ../Data/s_0_001_rec/sample_10.vcf.
+There are 95 SNPs in this sample.
+The minimum chi-squared p-value is 0.03518598468525299.
+The minimum Fisher p-value is 0.04643962848297214.
+The proportion of chi-squared p-values below 0.5 is 0.1368421052631579.
+The proportion of chi-squared p-values below 0.05 is 0.010526315789473684
+.The proportion of Fisher p-values below 0.5 is 0.2.
+The proportion of Fisher p-values below 0.05 is 0.010526315789473684
+.
+Outputting summary results for ../Data/s_0_001_rec/sample_50.vcf.
+There are 159 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.010703891875894047.
+The proportion of chi-squared p-values below 0.5 is 0.1509433962264151.
+The proportion of chi-squared p-values below 0.05 is 0.03773584905660377
+.The proportion of Fisher p-values below 0.5 is 0.15723270440251572.
+The proportion of Fisher p-values below 0.05 is 0.031446540880503145
+.
+Outputting summary results for ../Data/s_0_001_rec/sample_100.vcf.
+There are 196 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.005247064703231415.
+The proportion of chi-squared p-values below 0.5 is 0.11224489795918367.
+The proportion of chi-squared p-values below 0.05 is 0.015306122448979591
+.The proportion of Fisher p-values below 0.5 is 0.16326530612244897.
+The proportion of Fisher p-values below 0.05 is 0.030612244897959183
+.
+Outputting summary results for ../Data/s_0_001_rec/sample_500.vcf.
+There are 258 SNPs in this sample.
+The minimum chi-squared p-value is 5.2542357211171115e-06.
+The minimum Fisher p-value is 0.0023528113189154568.
+The proportion of chi-squared p-values below 0.5 is 0.15891472868217055.
+The proportion of chi-squared p-values below 0.05 is 0.031007751937984496
+.The proportion of Fisher p-values below 0.5 is 0.1937984496124031.
+The proportion of Fisher p-values below 0.05 is 0.027131782945736434
+.
+Outputting summary results for ../Data/s_0_001_rec/sample_1000.vcf.
+There are 291 SNPs in this sample.
+The minimum chi-squared p-value is 1.6735919912726124e-05.
+The minimum Fisher p-value is 0.0009377522992079814.
+The proportion of chi-squared p-values below 0.5 is 0.21649484536082475.
+The proportion of chi-squared p-values below 0.05 is 0.03436426116838488
+.The proportion of Fisher p-values below 0.5 is 0.18213058419243985.
+The proportion of Fisher p-values below 0.05 is 0.048109965635738834
+.
+Outputting summary results for ../Data/s_0_01_rec/sample_10.vcf.
+There are 54 SNPs in this sample.
+The minimum chi-squared p-value is 0.3991702158434838.
+The minimum Fisher p-value is 0.281733746130031.
+The proportion of chi-squared p-values below 0.5 is 0.07407407407407407.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.07407407407407407.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_01_rec/sample_50.vcf.
+There are 119 SNPs in this sample.
+The minimum chi-squared p-value is 1.3887943864964048e-11.
+The minimum Fisher p-value is 0.010101010101010102.
+The proportion of chi-squared p-values below 0.5 is 0.12605042016806722.
+The proportion of chi-squared p-values below 0.05 is 0.03361344537815126
+.The proportion of Fisher p-values below 0.5 is 0.17647058823529413.
+The proportion of Fisher p-values below 0.05 is 0.025210084033613446
+.
+Outputting summary results for ../Data/s_0_01_rec/sample_100.vcf.
+There are 155 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.015255680073412853.
+The proportion of chi-squared p-values below 0.5 is 0.14193548387096774.
+The proportion of chi-squared p-values below 0.05 is 0.03225806451612903
+.The proportion of Fisher p-values below 0.5 is 0.2.
+The proportion of Fisher p-values below 0.05 is 0.025806451612903226
+.
+Outputting summary results for ../Data/s_0_01_rec/sample_500.vcf.
+There are 218 SNPs in this sample.
+The minimum chi-squared p-value is 0.0005575821645365201.
+The minimum Fisher p-value is 0.006339660029817709.
+The proportion of chi-squared p-values below 0.5 is 0.1834862385321101.
+The proportion of chi-squared p-values below 0.05 is 0.027522935779816515
+.The proportion of Fisher p-values below 0.5 is 0.20642201834862386.
+The proportion of Fisher p-values below 0.05 is 0.027522935779816515
+.
+Outputting summary results for ../Data/s_0_01_rec/sample_1000.vcf.
+There are 251 SNPs in this sample.
+The minimum chi-squared p-value is 4.482825597049613e-07.
+The minimum Fisher p-value is 3.686875776014411e-05.
+The proportion of chi-squared p-values below 0.5 is 0.1553784860557769.
+The proportion of chi-squared p-values below 0.05 is 0.043824701195219126
+.The proportion of Fisher p-values below 0.5 is 0.18326693227091634.
+The proportion of Fisher p-values below 0.05 is 0.035856573705179286
+.
+Outputting summary results for ../Data/s_0_1_rec/sample_10.vcf.
+There are 21 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.05263157894736842.
+The proportion of chi-squared p-values below 0.5 is 0.09523809523809523.
+The proportion of chi-squared p-values below 0.05 is 0.047619047619047616
+.The proportion of Fisher p-values below 0.5 is 0.09523809523809523.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_1_rec/sample_50.vcf.
+There are 62 SNPs in this sample.
+The minimum chi-squared p-value is 0.12077484254231236.
+The minimum Fisher p-value is 0.12605951320033995.
+The proportion of chi-squared p-values below 0.5 is 0.0967741935483871.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.0967741935483871.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_1_rec/sample_100.vcf.
+There are 88 SNPs in this sample.
+The minimum chi-squared p-value is 0.007524984138352592.
+The minimum Fisher p-value is 0.010293433548874797.
+The proportion of chi-squared p-values below 0.5 is 0.07954545454545454.
+The proportion of chi-squared p-values below 0.05 is 0.022727272727272728
+.The proportion of Fisher p-values below 0.5 is 0.125.
+The proportion of Fisher p-values below 0.05 is 0.011363636363636364
+.
+Outputting summary results for ../Data/s_0_1_rec/sample_500.vcf.
+There are 153 SNPs in this sample.
+The minimum chi-squared p-value is 1.5891509528313423e-05.
+The minimum Fisher p-value is 0.003014519575452625.
+The proportion of chi-squared p-values below 0.5 is 0.09803921568627451.
+The proportion of chi-squared p-values below 0.05 is 0.026143790849673203
+.The proportion of Fisher p-values below 0.5 is 0.13725490196078433.
+The proportion of Fisher p-values below 0.05 is 0.0196078431372549
+.
+Outputting summary results for ../Data/s_0_1_rec/sample_1000.vcf.
+There are 185 SNPs in this sample.
+The minimum chi-squared p-value is 4.5685932438868644e-09.
+The minimum Fisher p-value is 0.0001795037489860396.
+The proportion of chi-squared p-values below 0.5 is 0.11891891891891893.
+The proportion of chi-squared p-values below 0.05 is 0.032432432432432434
+.The proportion of Fisher p-values below 0.5 is 0.11891891891891893.
+The proportion of Fisher p-values below 0.05 is 0.02702702702702703
+.
+Outputting summary results for ../Data/s_0_add/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.05263157894736842.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.2345679012345679.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_add/sample_50.vcf.
+There are 147 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.009891512106336774.
+The proportion of chi-squared p-values below 0.5 is 0.19047619047619047.
+The proportion of chi-squared p-values below 0.05 is 0.02040816326530612
+.The proportion of Fisher p-values below 0.5 is 0.2585034013605442.
+The proportion of Fisher p-values below 0.05 is 0.027210884353741496
+.
+Outputting summary results for ../Data/s_0_add/sample_100.vcf.
+There are 174 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.0008120211029254568.
+The proportion of chi-squared p-values below 0.5 is 0.14367816091954022.
+The proportion of chi-squared p-values below 0.05 is 0.034482758620689655
+.The proportion of Fisher p-values below 0.5 is 0.20114942528735633.
+The proportion of Fisher p-values below 0.05 is 0.040229885057471264
+.
+Outputting summary results for ../Data/s_0_add/sample_500.vcf.
+There are 221 SNPs in this sample.
+The minimum chi-squared p-value is 0.0025672565677917637.
+The minimum Fisher p-value is 0.002426490945758831.
+The proportion of chi-squared p-values below 0.5 is 0.14479638009049775.
+The proportion of chi-squared p-values below 0.05 is 0.01809954751131222
+.The proportion of Fisher p-values below 0.5 is 0.248868778280543.
+The proportion of Fisher p-values below 0.05 is 0.027149321266968326
+.
+Outputting summary results for ../Data/s_0_add/sample_1000.vcf.
+There are 256 SNPs in this sample.
+The minimum chi-squared p-value is 3.2112353435968775e-19.
+The minimum Fisher p-value is 7.615191766438663e-11.
+The proportion of chi-squared p-values below 0.5 is 0.16796875.
+The proportion of chi-squared p-values below 0.05 is 0.04296875
+.The proportion of Fisher p-values below 0.5 is 0.23046875.
+The proportion of Fisher p-values below 0.05 is 0.05078125
+.
+Outputting summary results for ../Data/s_0_001_add/sample_10.vcf.
+There are 76 SNPs in this sample.
+The minimum chi-squared p-value is 0.03518598468525299.
+The minimum Fisher p-value is 0.15789473684210525.
+The proportion of chi-squared p-values below 0.5 is 0.07894736842105263.
+The proportion of chi-squared p-values below 0.05 is 0.013157894736842105
+.The proportion of Fisher p-values below 0.5 is 0.09210526315789473.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_001_add/sample_50.vcf.
+There are 140 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.030303030303030304.
+The proportion of chi-squared p-values below 0.5 is 0.17142857142857143.
+The proportion of chi-squared p-values below 0.05 is 0.05
+.The proportion of Fisher p-values below 0.5 is 0.24285714285714285.
+The proportion of Fisher p-values below 0.05 is 0.02857142857142857
+.
+Outputting summary results for ../Data/s_0_001_add/sample_100.vcf.
+There are 177 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.004624020858040387.
+The proportion of chi-squared p-values below 0.5 is 0.096045197740113.
+The proportion of chi-squared p-values below 0.05 is 0.01694915254237288
+.The proportion of Fisher p-values below 0.5 is 0.1864406779661017.
+The proportion of Fisher p-values below 0.05 is 0.02824858757062147
+.
+Outputting summary results for ../Data/s_0_001_add/sample_500.vcf.
+There are 239 SNPs in this sample.
+The minimum chi-squared p-value is 1.6818354288152377e-12.
+The minimum Fisher p-value is 0.0023528113189154568.
+The proportion of chi-squared p-values below 0.5 is 0.16317991631799164.
+The proportion of chi-squared p-values below 0.05 is 0.03765690376569038
+.The proportion of Fisher p-values below 0.5 is 0.20920502092050208.
+The proportion of Fisher p-values below 0.05 is 0.03765690376569038
+.
+Outputting summary results for ../Data/s_0_001_add/sample_1000.vcf.
+There are 271 SNPs in this sample.
+The minimum chi-squared p-value is 4.104939882604243e-11.
+The minimum Fisher p-value is 0.00024649907963788023.
+The proportion of chi-squared p-values below 0.5 is 0.17712177121771217.
+The proportion of chi-squared p-values below 0.05 is 0.04428044280442804
+.The proportion of Fisher p-values below 0.5 is 0.19557195571955718.
+The proportion of Fisher p-values below 0.05 is 0.04797047970479705
+.
+Outputting summary results for ../Data/s_0_01_add/sample_10.vcf.
+There are 15 SNPs in this sample.
+The minimum chi-squared p-value is 0.15765181226837047.
+The minimum Fisher p-value is 0.15789473684210525.
+The proportion of chi-squared p-values below 0.5 is 0.06666666666666667.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.06666666666666667.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_01_add/sample_50.vcf.
+There are 53 SNPs in this sample.
+The minimum chi-squared p-value is 0.0032147124638421233.
+The minimum Fisher p-value is 0.020951114067176587.
+The proportion of chi-squared p-values below 0.5 is 0.1509433962264151.
+The proportion of chi-squared p-values below 0.05 is 0.09433962264150944
+.The proportion of Fisher p-values below 0.5 is 0.1509433962264151.
+The proportion of Fisher p-values below 0.05 is 0.018867924528301886
+.
+Outputting summary results for ../Data/s_0_01_add/sample_100.vcf.
+There are 86 SNPs in this sample.
+The minimum chi-squared p-value is 0.11686435965175293.
+The minimum Fisher p-value is 0.08614897630665835.
+The proportion of chi-squared p-values below 0.5 is 0.046511627906976744.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.06976744186046512.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_01_add/sample_500.vcf.
+There are 145 SNPs in this sample.
+The minimum chi-squared p-value is 7.746755258611223e-18.
+The minimum Fisher p-value is 0.0023528113189154568.
+The proportion of chi-squared p-values below 0.5 is 0.0896551724137931.
+The proportion of chi-squared p-values below 0.05 is 0.041379310344827586
+.The proportion of Fisher p-values below 0.5 is 0.13793103448275862.
+The proportion of Fisher p-values below 0.05 is 0.034482758620689655
+.
+Outputting summary results for ../Data/s_0_01_add/sample_1000.vcf.
+There are 173 SNPs in this sample.
+The minimum chi-squared p-value is 4.104939882604243e-11.
+The minimum Fisher p-value is 0.0001167715457420093.
+The proportion of chi-squared p-values below 0.5 is 0.10982658959537572.
+The proportion of chi-squared p-values below 0.05 is 0.028901734104046242
+.The proportion of Fisher p-values below 0.5 is 0.13872832369942195.
+The proportion of Fisher p-values below 0.05 is 0.04046242774566474
+.
+Outputting summary results for ../Data/s_0_1_add/sample_10.vcf.
+There are 1 SNPs in this sample.
+The minimum chi-squared p-value is 0.8558079011576558.
+The minimum Fisher p-value is 1.0.
+The proportion of chi-squared p-values below 0.5 is 0.0.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.0.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_1_add/sample_50.vcf.
+There are 5 SNPs in this sample.
+The minimum chi-squared p-value is 0.9330914390145758.
+The minimum Fisher p-value is 1.0.
+The proportion of chi-squared p-values below 0.5 is 0.0.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.0.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_1_add/sample_100.vcf.
+There are 13 SNPs in this sample.
+The minimum chi-squared p-value is 0.9884717172910189.
+The minimum Fisher p-value is 1.0.
+The proportion of chi-squared p-values below 0.5 is 0.0.
+The proportion of chi-squared p-values below 0.05 is 0.0
+.The proportion of Fisher p-values below 0.5 is 0.0.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_1_add/sample_500.vcf.
+There are 54 SNPs in this sample.
+The minimum chi-squared p-value is 1.6818354288152377e-12.
+The minimum Fisher p-value is 0.014969849564084531.
+The proportion of chi-squared p-values below 0.5 is 0.018518518518518517.
+The proportion of chi-squared p-values below 0.05 is 0.018518518518518517
+.The proportion of Fisher p-values below 0.5 is 0.018518518518518517.
+The proportion of Fisher p-values below 0.05 is 0.018518518518518517
+.
+Outputting summary results for ../Data/s_0_1_add/sample_1000.vcf.
+There are 79 SNPs in this sample.
+The minimum chi-squared p-value is 3.327854990971623e-07.
+The minimum Fisher p-value is 0.00522244773433356.
+The proportion of chi-squared p-values below 0.5 is 0.02531645569620253.
+The proportion of chi-squared p-values below 0.05 is 0.012658227848101266
+.The proportion of Fisher p-values below 0.5 is 0.02531645569620253.
+The proportion of Fisher p-values below 0.05 is 0.012658227848101266
+.
+Outputting summary results for ../Data/s_0_seed_2/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.05263157894736842.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.2345679012345679.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_seed_2/sample_50.vcf.
+There are 147 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.009891512106336774.
+The proportion of chi-squared p-values below 0.5 is 0.19047619047619047.
+The proportion of chi-squared p-values below 0.05 is 0.02040816326530612
+.The proportion of Fisher p-values below 0.5 is 0.2585034013605442.
+The proportion of Fisher p-values below 0.05 is 0.027210884353741496
+.
+Outputting summary results for ../Data/s_0_seed_2/sample_100.vcf.
+There are 174 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.0008120211029254568.
+The proportion of chi-squared p-values below 0.5 is 0.14367816091954022.
+The proportion of chi-squared p-values below 0.05 is 0.034482758620689655
+.The proportion of Fisher p-values below 0.5 is 0.20114942528735633.
+The proportion of Fisher p-values below 0.05 is 0.040229885057471264
+.
+Outputting summary results for ../Data/s_0_seed_2/sample_500.vcf.
+There are 221 SNPs in this sample.
+The minimum chi-squared p-value is 0.0025672565677917637.
+The minimum Fisher p-value is 0.002426490945758831.
+The proportion of chi-squared p-values below 0.5 is 0.14479638009049775.
+The proportion of chi-squared p-values below 0.05 is 0.01809954751131222
+.The proportion of Fisher p-values below 0.5 is 0.248868778280543.
+The proportion of Fisher p-values below 0.05 is 0.027149321266968326
+.
+Outputting summary results for ../Data/s_0_seed_2/sample_1000.vcf.
+There are 256 SNPs in this sample.
+The minimum chi-squared p-value is 3.2112353435968775e-19.
+The minimum Fisher p-value is 7.615191766438663e-11.
+The proportion of chi-squared p-values below 0.5 is 0.16796875.
+The proportion of chi-squared p-values below 0.05 is 0.04296875
+.The proportion of Fisher p-values below 0.5 is 0.23046875.
+The proportion of Fisher p-values below 0.05 is 0.05078125
+.
+Outputting summary results for ../Data/s_0_seed_3/sample_10.vcf.
+There are 81 SNPs in this sample.
+The minimum chi-squared p-value is 0.006737946999085468.
+The minimum Fisher p-value is 0.05263157894736842.
+The proportion of chi-squared p-values below 0.5 is 0.16049382716049382.
+The proportion of chi-squared p-values below 0.05 is 0.024691358024691357
+.The proportion of Fisher p-values below 0.5 is 0.2345679012345679.
+The proportion of Fisher p-values below 0.05 is 0.0
+.
+Outputting summary results for ../Data/s_0_seed_3/sample_50.vcf.
+There are 147 SNPs in this sample.
+The minimum chi-squared p-value is 2.101812221142674e-05.
+The minimum Fisher p-value is 0.009891512106336774.
+The proportion of chi-squared p-values below 0.5 is 0.19047619047619047.
+The proportion of chi-squared p-values below 0.05 is 0.02040816326530612
+.The proportion of Fisher p-values below 0.5 is 0.2585034013605442.
+The proportion of Fisher p-values below 0.05 is 0.027210884353741496
+.
+Outputting summary results for ../Data/s_0_seed_3/sample_100.vcf.
+There are 174 SNPs in this sample.
+The minimum chi-squared p-value is 6.174997486680375e-06.
+The minimum Fisher p-value is 0.0008120211029254568.
+The proportion of chi-squared p-values below 0.5 is 0.14367816091954022.
+The proportion of chi-squared p-values below 0.05 is 0.034482758620689655
+.The proportion of Fisher p-values below 0.5 is 0.20114942528735633.
+The proportion of Fisher p-values below 0.05 is 0.040229885057471264
+.
+Outputting summary results for ../Data/s_0_seed_3/sample_500.vcf.
+There are 221 SNPs in this sample.
+The minimum chi-squared p-value is 0.0025672565677917637.
+The minimum Fisher p-value is 0.002426490945758831.
+The proportion of chi-squared p-values below 0.5 is 0.14479638009049775.
+The proportion of chi-squared p-values below 0.05 is 0.01809954751131222
+.The proportion of Fisher p-values below 0.5 is 0.248868778280543.
+The proportion of Fisher p-values below 0.05 is 0.027149321266968326
+.
+Outputting summary results for ../Data/s_0_seed_3/sample_1000.vcf.
+There are 256 SNPs in this sample.
+The minimum chi-squared p-value is 3.2112353435968775e-19.
+The minimum Fisher p-value is 7.615191766438663e-11.
+The proportion of chi-squared p-values below 0.5 is 0.16796875.
+The proportion of chi-squared p-values below 0.05 is 0.04296875
+.The proportion of Fisher p-values below 0.5 is 0.23046875.
+The proportion of Fisher p-values below 0.05 is 0.05078125
+.

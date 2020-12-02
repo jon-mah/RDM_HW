@@ -78,6 +78,21 @@ class ComputeHardyWeinbergExpectation():
             math.factorial(2 * num_ind)
         return fisher_numerator / fisher_denominator
 
+    def compute_chi_p(self, num_ind, allele_count_a, allele_count_b,
+                      obs_homo_a, obs_hetero, obs_homo_b):
+        """Return probability for Chi-squared test."""
+        total_allele_count = allele_count_a + allele_count_b
+        allele_freq_a = allele_count_a / total_allele_count
+        allele_freq_b = allele_count_b / total_allele_count
+        # chi-squared
+        exp_homo_a = allele_freq_a ** 2 * total_allele_count / 2
+        exp_hetero = allele_freq_a * allele_freq_b * \
+            total_allele_count
+        exp_homo_b = allele_freq_b ** 2 * total_allele_count / 2
+        f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
+        f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
+        return stats.chisquare(f_obs, f_exp)[1]
+
     def main(self):
         """Execute main function."""
         # Parse command line arguments
@@ -95,13 +110,74 @@ class ComputeHardyWeinbergExpectation():
                             'number of individuals at this time.')
 
         n_combinations = int(n_ton / 2) + 1
-        comb_dict = {}
+
+        combination_vectors = []
+        fisher_pr_values = []
+        chi_pr_values = []
         for i in range(n_combinations):
             combination_vector = [num_ind - n_ton + i, n_ton - 2 * i, i]
-            print('The probability of ' + str(combination_vector) + ' is: ' +
-                  str(self.compute_fisher_p(num_ind, 2 * num_ind - n_ton,
-                                            n_ton, num_ind - n_ton + i,
-                                            n_ton - 2 * i, i)))
+            combination_vectors.append(combination_vector)
+            chi_pr = self.compute_chi_p(num_ind, 2 * num_ind - n_ton, n_ton,
+                                        num_ind - n_ton + i, n_ton - 2 * i, i)
+            chi_pr_values.append(chi_pr)
+            fisher_pr = self.compute_fisher_p(num_ind,
+                                              2 * num_ind - n_ton,
+                                              n_ton, num_ind - n_ton + i,
+                                              n_ton - 2 * i, i)
+            fisher_pr_values.append(fisher_pr)
+
+        # One sided p-value with less than or equal homozygotes.
+        chi_p_n_homo_leq = []
+        fisher_p_n_homo_leq = []
+        for i in range(len(fisher_pr_values)):
+            timer = i
+            temp_chi = 0
+            temp_fisher = 0
+            while timer >= 0:
+                temp_chi += chi_pr_values[timer]
+                temp_fisher += fisher_pr_values[timer]
+                timer -= 1
+            chi_p_n_homo_leq.append(temp_chi)
+            fisher_p_n_homo_leq.append(temp_fisher)
+
+        # One sided p-value with greater than or equal homozygotes.
+        chi_p_n_homo_geq = []
+        fisher_p_n_homo_geq = []
+        for i in range(len(fisher_pr_values)):
+            timer = i
+            temp_chi = 0
+            temp_fisher = 0
+            while timer <= ((len(fisher_pr_values)) - 1):
+                temp_chi += chi_pr_values[timer]
+                temp_fisher += fisher_pr_values[timer]
+                timer += 1
+            chi_p_n_homo_geq.append(temp_chi)
+            fisher_p_n_homo_geq.append(temp_fisher)
+
+        # Two sided p-value with every more extreme case.
+        chi_p_two_sided = []
+        fisher_p_two_sided = []
+        for i in range(len(fisher_pr_values)):
+            temp_chi = 0
+            temp_fisher = 0
+            for j in range(len(fisher_pr_values)):
+                if chi_pr_values[j] <= chi_pr_values[i]:
+                    temp_chi += chi_pr_values[j]
+                if fisher_pr_values[j] <= fisher_pr_values[i]:
+                    temp_fisher += fisher_pr_values[j]
+            chi_p_two_sided.append(temp_chi)
+            fisher_p_two_sided.append(temp_fisher)
+
+        summary_df = pd.DataFrame({'combination': combination_vectors,
+                                   'chi_pr_values': chi_pr_values,
+                                   # 'chi_p_n_homo_leq': chi_p_n_homo_leq,
+                                   # 'chi_p_n_homo_geq': chi_p_n_homo_geq,
+                                   # 'chi_p_two_sided': chi_p_two_sided,
+                                   'fisher_pr_values': fisher_pr_values,
+                                   'fisher_p_n_homo_leq': fisher_p_n_homo_leq,
+                                   'fisher_p_n_homo_geq': fisher_p_n_homo_geq,
+                                   'fisher_p_two_sided': fisher_p_two_sided})
+        print(summary_df)
 
         if (compute_by_hand):
             # Doubletons
@@ -249,6 +325,7 @@ class ComputeHardyWeinbergExpectation():
             print('The probability of five homozygotes is ' +
                   str(self.compute_fisher_p(num_ind, 2 * num_ind - 10, 10,
                                             num_ind - 5, 0, 5)) + '.')
+        return summary_df
 
 
 if __name__ == '__main__':

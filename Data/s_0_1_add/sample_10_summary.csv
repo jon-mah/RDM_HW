@@ -1,2 +1,2 @@
-chrom,pos,allele_count,num_heterozygotes,num_homozygotes,chi_p_values,fisher_p_values
-76,21,3,3,0,0.8558079011576558,0.8421052631578947
+chrom,pos,allele_count,num_heterozygotes,num_homozygotes,chi_pr_values,fisher_pr_values,fisher_p_n_homo_leq,fisher_p_n_homo_geq,fisher_p_two_sided
+76,21,3,3,0,0.8558079011576558,0.8421052631578947,0.8421052631578947,1.0,1.0

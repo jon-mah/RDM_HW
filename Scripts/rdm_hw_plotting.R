@@ -12,25 +12,24 @@ s_0_1_rec_1000 = read.csv('./Data/s_0_1_rec/sample_1000_summary.csv') # 0_1_rec_
 s_0_add_1000 = read.csv('./Data/s_0_add/sample_1000_summary.csv') # 0_1000
 s_0_rec_1000 = read.csv('./Data/s_0_rec/sample_1000_summary.csv') # 0_1000
 # chi-squared p-values
-chi_p_s_0_add_1000 = s_0_add_1000$chi_p_values
-chi_p_s_0_001_add_1000 = s_0_001_add_1000$chi_p_values
-chi_p_s_0_01_add_1000 = s_0_01_add_1000$chi_p_values
-chi_p_s_0_1_add_1000 = s_0_1_add_1000$chi_p_values
-chi_p_s_0_rec_1000 = s_0_rec_1000$chi_p_values
-chi_p_s_0_001_rec_1000 = s_0_001_rec_1000$chi_p_values
-chi_p_s_0_01_rec_1000 = s_0_01_rec_1000$chi_p_values
-chi_p_s_0_1_rec_1000 = s_0_1_rec_1000$chi_p_values
+chi_p_s_0_add_1000 = s_0_add_1000$chi_pr_values
+chi_p_s_0_001_add_1000 = s_0_001_add_1000$chi_pr_values
+chi_p_s_0_01_add_1000 = s_0_01_add_1000$chi_pr_values
+chi_p_s_0_1_add_1000 = s_0_1_add_1000$chi_pr_values
+chi_p_s_0_rec_1000 = s_0_rec_1000$chi_pr_values
+chi_p_s_0_001_rec_1000 = s_0_001_rec_1000$chi_pr_values
+chi_p_s_0_01_rec_1000 = s_0_01_rec_1000$chi_pr_values
+chi_p_s_0_1_rec_1000 = s_0_1_rec_1000$chi_pr_values
 
-# fisher p-values
-fisher_p_s_0_add_1000 = s_0_add_1000$fisher_p_values
-fisher_p_s_0_001_add_1000 = s_0_001_add_1000$fisher_p_values
-fisher_p_s_0_01_add_1000 = s_0_01_add_1000$fisher_p_values
-fisher_p_s_0_1_add_1000 = s_0_1_add_1000$fisher_p_values
-fisher_p_s_0_rec_1000 = s_0_rec_1000$fisher_p_values
-fisher_p_s_0_001_rec_1000 = s_0_001_rec_1000$fisher_p_values
-fisher_p_s_0_01_rec_1000 = s_0_01_rec_1000$fisher_p_values
-fisher_p_s_0_1_rec_1000 = s_0_1_rec_1000$fisher_p_values
-
+# fisher p-values (leq)
+fisher_p_s_0_add_1000 = s_0_add_1000$fisher_p_n_homo_leq
+fisher_p_s_0_001_add_1000 = s_0_001_add_1000$fisher_p_n_homo_leq
+fisher_p_s_0_01_add_1000 = s_0_01_add_1000$fisher_p_n_homo_leq
+fisher_p_s_0_1_add_1000 = s_0_1_add_1000$fisher_p_n_homo_leq
+fisher_p_s_0_rec_1000 = s_0_rec_1000$fisher_p_n_homo_leq
+fisher_p_s_0_001_rec_1000 = s_0_001_rec_1000$fisher_p_n_homo_leq
+fisher_p_s_0_01_rec_1000 = s_0_01_rec_1000$fisher_p_n_homo_leq
+fisher_p_s_0_1_rec_1000 = s_0_1_rec_1000$fisher_p_n_homo_leq
 
 log_chi_p_s_0_add_1000 = -log10(sort(chi_p_s_0_add_1000))
 log_chi_p_s_0_rec_1000 = -log10(sort(chi_p_s_0_rec_1000))
@@ -57,7 +56,6 @@ y_axis_0_1000 = -log10(1:nrow(s_0_add_1000) / nrow(s_0_add_1000))
 y_axis_0_001_rec_1000 = -log10(1:nrow(s_0_001_rec_1000) / nrow(s_0_001_rec_1000))
 y_axis_0_01_rec_1000 = -log10(1:nrow(s_0_01_rec_1000) / nrow(s_0_01_rec_1000))
 y_axis_0_1_rec_1000 = -log10(1:nrow(s_0_1_rec_1000) / nrow(s_0_1_rec_1000))
-
 
 data_0_001_add_1000 = data.frame(y_axis_0_001_add_1000, log_chi_p_s_0_001_add_1000, log_fisher_p_s_0_001_add_1000)
 data_0_1000 = data.frame(y_axis_0_1000, log_chi_p_s_0_add_1000, log_chi_p_s_0_rec_1000,log_fisher_p_s_0_add_1000, log_fisher_p_s_0_rec_1000)
@@ -182,14 +180,14 @@ p_0_01_rec_1000 = ggplot(data=data_0_01_rec_1000, aes(y=log_chi_p_s_0_01_rec_100
 p_0_01_rec_1000
 
 s_0_rec_10$allele_count = as.factor(s_0_rec_10$allele_count)
-p_fisher_boxplot = ggplot(data=s_0_rec_10, aes(x=allele_count, y=fisher_p_values)) + 
+p_fisher_boxplot = ggplot(data=s_0_rec_10, aes(x=allele_count, y=fisher_p_n_homo_leq)) + 
   geom_boxplot() +
   ggtitle("s=0, Fisher's Exact Test") +
   xlab('allele count') +
   ylab('p-values')
 p_fisher_boxplot
 
-p_chi_boxplot = ggplot(data=s_0_rec_10, aes(x=allele_count, y=chi_p_values)) +
+p_chi_boxplot = ggplot(data=s_0_rec_10, aes(x=allele_count, y=chi_pr_values)) +
   geom_boxplot() +
   ggtitle("s=0, chi-squared Test") +
   xlab('allele count') +
