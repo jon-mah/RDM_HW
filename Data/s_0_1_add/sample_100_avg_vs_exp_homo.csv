@@ -1,2 +1,2 @@
-,avg_homo_b,exp_homo_b,n_ton
-0,0,0,2
+,n_ton,avg_homo_b,exp_homo_b,exp_minus_avg
+0,2,0.0,0.005025125628140704,0.005025125628140704
