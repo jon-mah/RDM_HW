@@ -88,9 +88,9 @@ class ComputeHardyWeinbergExpectation():
         exp_homo_a = allele_freq_a ** 2 * total_allele_count / 2
         exp_hetero = allele_freq_a * allele_freq_b * \
             total_allele_count
-        exp_homo_b = allele_freq_b ** 2 * total_allele_count / 2
+        exact_exp_homo_b = allele_freq_b ** 2 * total_allele_count / 2
         f_obs = [obs_homo_a, obs_hetero, obs_homo_b]
-        f_exp = [exp_homo_a, exp_hetero, exp_homo_b]
+        f_exp = [exp_homo_a, exp_hetero, exact_exp_homo_b]
         return stats.chisquare(f_obs, f_exp)[1]
 
     def main(self):
@@ -176,13 +176,24 @@ class ComputeHardyWeinbergExpectation():
                                    'fisher_p_n_homo_geq': fisher_p_n_homo_geq,
                                    'fisher_p_two_sided': fisher_p_two_sided})
         print(summary_df)
-        exp_homo_b = 0
+        exact_exp_homo_b = 0
         for i in range(len(combination_vectors)):
-            exp_homo_b += list(combination_vectors[i])[2] * fisher_pr_values[i]
+            exact_exp_homo_b += list(combination_vectors[i])[2] * \
+                fisher_pr_values[i]
 
-        print('The expected number of minor allele homozygotes given a ' +
-              str(n_ton) + '-ton in a sample of ' + str(num_ind) + ' is ' +
-              str(exp_homo_b) + '.')
+        approximate_exp_homo_b = (n_ton / (2 * num_ind)) ** 2 * num_ind
+        print('The exact expected number of minor allele homozygotes given ' +
+              'a ' + str(n_ton) + '-ton in a sample of ' + str(num_ind) +
+              ' is ' + str(exact_exp_homo_b) + '.')
+        print('The approximate expected number of minor allele homozygotes ' +
+              'given a ' + str(n_ton) + '-ton in a sample of ' + str(num_ind) +
+              ' is ' + str(approximate_exp_homo_b) + '.')
+
+        with open('../Data/output.txt', 'a') as f:
+            f.write(
+                str(n_ton) + ', ' +
+                str(exact_exp_homo_b) + ', ' +
+                str(approximate_exp_homo_b) + '\n')
 
         if (compute_by_hand):
             # Doubletons

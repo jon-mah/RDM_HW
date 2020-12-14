@@ -307,22 +307,24 @@ class ComputeHardyWeinbergDeparture():
         low_fisher_p_freq = low_fisher_p_count / len(fisher_p_n_homo_leq)
         sig_fisher_p_freq = sig_fisher_p_count / len(fisher_p_n_homo_leq)
 
-        with open('../Data/output.txt', 'a') as f:
-            f.write('Outputting summary results for ' + str(input_vcf) + '.\n')
-            f.write('There are ' + str(snp_count) + ' SNPs in this sample.\n')
-            f.write('The minimum chi-squared p-value is ' +
-                    str(chi_pr_values[0]) + '.\n')
-            f.write('The minimum Fisher p-value is ' +
-                    str(fisher_p_n_homo_leq[0]) + '.\n')
-            f.write('The proportion of chi-squared p-values below 0.5 is ' +
-                    str(low_chi_p_freq) + '.\n')
-            f.write('The proportion of chi-squared p-values below 0.05 is ' +
-                    str(sig_chi_p_freq) + '\n.')
-            f.write('The proportion of Fisher p-values below 0.5 is ' +
-                    str(low_fisher_p_freq) + '.\n')
-            f.write('The proportion of Fisher p-values below 0.05 is ' +
-                    str(sig_fisher_p_freq) + '\n.')
-            f.write('\n')
+        # with open('../Data/output.txt', 'a') as f:
+        #     f.write(
+        #         'Outputting summary results for ' + str(input_vcf) + '.\n')
+        #     f.write(
+        #         'There are ' + str(snp_count) + ' SNPs in this sample.\n')
+        #     f.write('The minimum chi-squared p-value is ' +
+        #             str(chi_pr_values[0]) + '.\n')
+        #     f.write('The minimum Fisher p-value is ' +
+        #             str(fisher_p_n_homo_leq[0]) + '.\n')
+        #     f.write('The proportion of chi-squared p-values below 0.5 is ' +
+        #             str(low_chi_p_freq) + '.\n')
+        #     f.write('The proportion of chi-squared p-values below 0.05 is ' +
+        #             str(sig_chi_p_freq) + '\n.')
+        #     f.write('The proportion of Fisher p-values below 0.5 is ' +
+        #             str(low_fisher_p_freq) + '.\n')
+        #     f.write('The proportion of Fisher p-values below 0.05 is ' +
+        #             str(sig_fisher_p_freq) + '\n.')
+        #     f.write('\n')
 
         table_df = pd.DataFrame.from_records([
             {'sample_size': num_ind,
