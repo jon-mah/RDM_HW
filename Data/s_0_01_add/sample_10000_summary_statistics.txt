@@ -1,0 +1,3 @@
+The KS test statistic is: 0.7321428571428571.
+The KS test p-value is: 1.1391570862387893e-40.
+We can reject the null hypothesis since the p-value is less than the KS statistic.

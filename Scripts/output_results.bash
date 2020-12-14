@@ -6,7 +6,7 @@
 #$ -l h_rt=01:00:00
 
 # INPUT ARGUMENTS
-s_value=s_0_rec
+s_value=s_0_001_rec
 
 # given s value
 python3 compute_statistic.py ../Data/${s_value}/sample_10.vcf
